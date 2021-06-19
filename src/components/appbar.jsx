@@ -1,16 +1,6 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
+import { Typography, MenuItem, Menu, IconButton } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MenuItem from "@material-ui/core/MenuItem";
-import Menu from "@material-ui/core/Menu";
-
-const useStyles = makeStyles((theme) => ({
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-}));
 
 const barStyle = {
   color: "#555",
@@ -26,8 +16,6 @@ const logoStyle = {
 };
 
 export default function AppBar() {
-  const classes = useStyles();
-
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
