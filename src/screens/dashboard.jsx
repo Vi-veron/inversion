@@ -1,9 +1,31 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "../components/appbar";
+
+import EnhancedTable from "../components/table";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+}));
+
+const cardStyle = {
+  display: "flex",
+  justifyContent: "center",
+  margin: "2em",
+  minWidth: 170,
+};
 
 function Dashboard() {
+  const classes = useStyles();
+
   return (
-    <div>
-      <h1>Hello </h1>
+    <div className={classes.root}>
+      <AppBar />
+      <div style={cardStyle}>
+        <EnhancedTable />
+      </div>
     </div>
   );
 }
