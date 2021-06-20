@@ -60,6 +60,11 @@ const useStyles = makeStyles({
   container: {
     maxHeight: 440,
   },
+  tableHead: {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "2em",
+  },
 });
 
 const btnStyle = {
@@ -88,13 +93,7 @@ export default function StickyHeadTable() {
   return (
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            padding: "2em",
-          }}
-        >
+        <div className={classes.tableHead}>
           <Typography>Manage Investments</Typography>
           <button style={btnStyle}>Create Investments</button>
         </div>
