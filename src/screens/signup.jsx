@@ -45,8 +45,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
   },
   about: {
-    fontSize: "1.5vw",
-    fontWeight: 400,
+    fontSize: "1.2vw",
+    fontWeight: 500,
     paddingTop: "2vh",
     paddingLeft: "4vw",
     paddingRight: "4vw",
@@ -56,12 +56,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     color: "#292C30",
     fontWeight: 500,
-    marginTop: "4rem",
+    marginTop: "8vh",
     minWidth: "320px",
   },
   subheader: {
     textAlign: "left",
-    padding: "2em 0",
+    padding: "2vh 0",
     color: "#879197",
     minWidth: "320px",
   },
@@ -96,7 +96,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: "3px solid #E5ECF0",
     lineHeight: "0.1em",
     minWidth: "320px",
-    margin: "60px 0 20px",
+    margin: "4vh 0 1vh",
   },
   lineText: {
     background: "#fff",
@@ -108,25 +108,26 @@ const useStyles = makeStyles((theme) => ({
   wrapper: {
     display: "flex",
     flexDirection: "row",
-    paddingTop: 80,
+    paddingTop: 60,
     position: "relative",
     color: "#4D555A",
     minWidth: "320px",
   },
   gridWrapper: {
-    paddingRight: 20,
+    paddingRight: "1vw",
   },
   wrapperLabel: {
     position: "absolute",
-    bottom: 70,
+    bottom: 60,
+    paddingBottom: "1vh",
   },
   gridStyle: {
-    padding: "20px 0",
+    padding: "1vw 0",
     minWidth: "320px",
   },
   labelStyle: {
     display: "flex",
-    paddingBottom: 20,
+    paddingBottom: "1vw",
     color: "#4D555A",
   },
   phoneInputStyle: {
@@ -139,6 +140,7 @@ const useStyles = makeStyles((theme) => ({
   checkbox: {
     minWidth: "320px",
   },
+  controlLabel: {},
   submit: {
     backgroundColor: "#4361EE",
     margin: "20px 0",
@@ -157,7 +159,7 @@ export default function SignUp() {
 
   return (
     <div className={classes.root}>
-      <Grid xs={12} container>
+      <Grid item xs={12} container>
         <Hidden xsDown>
           <Grid item sm={5}>
             <div className={classes.paper}>
@@ -176,7 +178,7 @@ export default function SignUp() {
         </Hidden>
         <Grid item xs={7}>
           <Container
-            classname={classes.container}
+            className={classes.container}
             component="main"
             maxWidth="sm"
           >
@@ -208,7 +210,7 @@ export default function SignUp() {
                 <span className={classes.lineText}>or</span>
               </h2>
               <div className={classes.wrapper}>
-                <Grid className={classes.gridWrapper} xs={6}>
+                <Grid item className={classes.gridWrapper} xs={6}>
                   <label className={classes.wrapperLabel}>First Name</label>
                   <TextField
                     autoComplete="fname"
@@ -220,7 +222,7 @@ export default function SignUp() {
                     autoFocus
                   />
                 </Grid>
-                <Grid xs={6}>
+                <Grid item xs={6}>
                   <label className={classes.wrapperLabel}>Last Name</label>
                   <TextField
                     variant="outlined"
@@ -273,6 +275,7 @@ export default function SignUp() {
                     <Checkbox value="allowExtraEmails" color="primary" />
                   }
                   label="I want to investments options and latest updates."
+                  className={classes.controlLabel}
                 />
               </FormGroup>
               <Button

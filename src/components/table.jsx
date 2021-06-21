@@ -11,6 +11,7 @@ import {
   TableRow,
   Typography,
 } from "@material-ui/core/";
+import { Link } from "react-router-dom";
 
 const columns = [
   { id: "investor", label: "Investor", minWidth: 100 },
@@ -65,6 +66,11 @@ const useStyles = makeStyles({
     justifyContent: "space-between",
     padding: "2em",
   },
+  linkStyle: {
+    textDecoration: "none",
+    color: "#fff",
+    backgroundColor: "#42275a",
+  },
 });
 
 const btnStyle = {
@@ -95,7 +101,11 @@ export default function StickyHeadTable() {
       <TableContainer className={classes.container}>
         <div className={classes.tableHead}>
           <Typography>Manage Investments</Typography>
-          <button style={btnStyle}>Create Investments</button>
+          <button style={btnStyle}>
+            <Link to="/createapplication" className={classes.linkStyle}>
+              Create Investments
+            </Link>
+          </button>
         </div>
         <Table stickyHeader aria-label="sticky table">
           <TableHead>

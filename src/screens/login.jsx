@@ -23,9 +23,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
   },
   container: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    marginRight: "20rem",
   },
   logo: {
     fontSize: 40,
@@ -42,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 500,
   },
   about: {
-    fontSize: "1.5vw",
-    fontWeight: 400,
+    fontSize: "1.2vw",
+    fontWeight: 500,
     paddingTop: "2vh",
     paddingLeft: "4vw",
     paddingRight: "4vw",
@@ -53,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     color: "#292C30",
     fontWeight: 500,
-    marginTop: "24%",
+    marginTop: "12rem",
     minWidth: "320px",
   },
   subheader: {
@@ -69,7 +67,6 @@ const useStyles = makeStyles((theme) => ({
     padding: "6px 0",
     fontSize: 18,
     width: "100%",
-    minWidth: "320px",
     fontWeight: 400,
     backgroundColor: "#fff",
     color: "#111",
@@ -78,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     position: "relative",
     textTransform: "none",
+    minWidth: "320px",
   },
   googleLogo: {
     position: "absolute",
@@ -102,7 +100,21 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 20,
     fontWeight: 400,
   },
-
+  wrapper: {
+    display: "flex",
+    flexDirection: "row",
+    paddingTop: 80,
+    position: "relative",
+    color: "#4D555A",
+    minWidth: "320px",
+  },
+  gridWrapper: {
+    paddingRight: 20,
+  },
+  wrapperLabel: {
+    position: "absolute",
+    bottom: 70,
+  },
   gridStyle: {
     padding: "20px 0",
     minWidth: "320px",
@@ -112,15 +124,24 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: 20,
     color: "#4D555A",
   },
-
+  phoneInputStyle: {
+    padding: 18,
+    width: "26.5vw",
+    border: "1px solid #ccc",
+    borderRadius: 3,
+    minWidth: "280px",
+  },
+  checkbox: {
+    minWidth: "320px",
+  },
   submit: {
     backgroundColor: "#4361EE",
     margin: "20px 0",
     padding: 8,
     textTransform: "none",
     fontSize: 20,
-    fontWeight: 500,
     minWidth: "320px",
+    fontWeight: 500,
   },
 }));
 
@@ -129,7 +150,7 @@ export default function Login() {
 
   return (
     <div className={classes.root}>
-      <Grid xs={12} container>
+      <Grid item xs={12} container>
         <Hidden xsDown>
           <Grid item sm={5}>
             <div className={classes.paper}>
@@ -147,8 +168,12 @@ export default function Login() {
           </Grid>
         </Hidden>
         <Grid item xs={7}>
-          <Container component="main" maxWidth="sm">
-            <div classname={classes.container}>
+          <Container
+            className={classes.container}
+            component="main"
+            maxWidth="sm"
+          >
+            <div>
               <Typography className={classes.header}>
                 Log Into Your Account
               </Typography>
