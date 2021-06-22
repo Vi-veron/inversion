@@ -14,7 +14,7 @@ import {
 import { Link } from "react-router-dom";
 
 const columns = [
-  { id: "investor", label: "Investor", minWidth: 100 },
+  { id: "investor", label: "Investor", minWidth: 80 },
 
   {
     id: "amount",
@@ -31,32 +31,32 @@ const columns = [
   },
 ];
 
-function createData(investor, amount, date) {
-  return { investor, amount, date };
+function createData(no, investor, amount, date) {
+  return { no, investor, amount, date };
 }
 
 const rows = [
-  createData("Kay Matthew", "500,000.00", "09 / 12 / 2020"),
-  createData("Nuel Freeman", "450,000.00", "15 / 02 /2021"),
-  createData("Kiara Smith ", "565,000.00", "18 / 05 / 2021"),
-  createData("James Veron", "650,000.00", "06 / 10 / 2020"),
-  createData("Sonia Joe", "234,000.00", "12 / 12 / 2020"),
-  createData("Kay Matthew", "500,000.00", "09 / 12 / 2020"),
-  createData("Nuel Freeman", "450,000.00", "15 / 02 /2021"),
-  createData("Kiara Smith ", "565,000.00", "18 / 05 / 2021"),
-  createData("James Veron", "650,000.00", "06 / 10 / 2020"),
-  createData("Sonia Joe", "234,000.00", "12 / 12 / 2020"),
-  createData("Kay Matthew", "500,000.00", "09 / 12 / 2020"),
-  createData("Nuel Freeman", "450,000.00", "15 / 02 /2021"),
-  createData("Kiara Smith ", "565,000.00", "18 / 05 / 2021"),
-  createData("James Veron", "650,000.00", "06 / 10 / 2020"),
-  createData("Sonia Joe", "234,000.00", "12 / 12 / 2020"),
+  createData("0", "Kay Matthew", "500,000.00", "09 / 12 / 2020"),
+  createData("1", "Nuel Freeman", "450,000.00", "15 / 02 /2021"),
+  createData("2", "Kiara Smith ", "565,000.00", "18 / 05 / 2021"),
+  createData("3", "James Veron", "650,000.00", "06 / 10 / 2020"),
+  createData("4", "Sonia Joe", "234,000.00", "12 / 12 / 2020"),
+  createData("5", "Kay Matthew", "500,000.00", "09 / 12 / 2020"),
+  createData("6", "Nuel Freeman", "450,000.00", "15 / 02 /2021"),
+  createData("7", "Kiara Smith ", "565,000.00", "18 / 05 / 2021"),
+  createData("8", "James Veron", "650,000.00", "06 / 10 / 2020"),
+  createData("9", "Sonia Joe", "234,000.00", "12 / 12 / 2020"),
+  createData("10", "Kay Matthew", "500,000.00", "09 / 12 / 2020"),
+  createData("11", "Nuel Freeman", "450,000.00", "15 / 02 /2021"),
+  createData("12", "Kiara Smith ", "565,000.00", "18 / 05 / 2021"),
+  createData("13", "James Veron", "650,000.00", "06 / 10 / 2020"),
+  createData("14", "Sonia Joe", "234,000.00", "12 / 12 / 2020"),
 ];
 
 const useStyles = makeStyles({
   root: {
-    width: "70vw",
-    margin: "4em",
+    width: "60vw",
+    minWidth: "300px",
   },
   container: {
     maxHeight: 440,
@@ -64,7 +64,7 @@ const useStyles = makeStyles({
   tableHead: {
     display: "flex",
     justifyContent: "space-between",
-    padding: "2em",
+    padding: "4%",
   },
   linkStyle: {
     textDecoration: "none",
@@ -80,6 +80,7 @@ const btnStyle = {
   color: "#fff",
   borderRadius: 5,
   cursor: "pointer",
+  fontSize: "90%",
 };
 
 export default function StickyHeadTable() {
@@ -126,12 +127,7 @@ export default function StickyHeadTable() {
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
-                  <TableRow
-                    hover
-                    role="checkbox"
-                    tabIndex={-1}
-                    key={row.amount}
-                  >
+                  <TableRow hover role="checkbox" tabIndex={-1} key={row.no}>
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (

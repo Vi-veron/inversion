@@ -10,9 +10,13 @@ import {
   Checkbox,
   FormControlLabel,
   FormGroup,
+  IconButton,
+  OutlinedInput,
+  InputAdornment,
 } from "@material-ui/core/";
 import { Link } from "react-router-dom";
 import Input from "react-phone-number-input/input";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -56,12 +60,12 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     color: "#292C30",
     fontWeight: 500,
-    marginTop: "8vh",
+    marginTop: "10%",
     minWidth: "320px",
   },
   subheader: {
     textAlign: "left",
-    padding: "2vh 0",
+    padding: "4% 0",
     color: "#879197",
     minWidth: "320px",
   },
@@ -96,7 +100,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: "3px solid #E5ECF0",
     lineHeight: "0.1em",
     minWidth: "320px",
-    margin: "4vh 0 1vh",
+    margin: "10% 0 3%",
   },
   lineText: {
     background: "#fff",
@@ -132,10 +136,17 @@ const useStyles = makeStyles((theme) => ({
   },
   phoneInputStyle: {
     padding: 18,
-    width: "26.5vw",
+    width: "90%",
     border: "1px solid #ccc",
     borderRadius: 3,
     minWidth: "280px",
+    "&:hover": {
+      border: "1px solid #111",
+    },
+  },
+  passwordStyle: {
+    minWidth: "320px",
+    width: "100%",
   },
   checkbox: {
     minWidth: "320px",
@@ -156,6 +167,24 @@ export default function SignUp() {
   const classes = useStyles();
 
   const [value, setValue] = useState();
+  const [values, setValues] = React.useState({
+    amount: "",
+    password: "",
+    weight: "",
+    weightRange: "",
+    showPassword: false,
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <div className={classes.root}>
@@ -259,14 +288,28 @@ export default function SignUp() {
 
               <Grid className={classes.gridStyle} item xs={12}>
                 <label className={classes.labelStyle}>Password</label>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
+                <OutlinedInput
+                  id="outlined-adornment-password"
+                  type={values.showPassword ? "text" : "password"}
+                  value={values.password}
+                  onChange={handleChange("password")}
+                  className={classes.passwordStyle}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {values.showPassword ? (
+                          <Visibility />
+                        ) : (
+                          <VisibilityOff />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  }
                 />
               </Grid>
               <FormGroup className={classes.checkbox} row>

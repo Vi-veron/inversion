@@ -7,16 +7,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { grey, purple } from "@material-ui/core/colors";
 
 const useBorderSelectStyles = makeStyles((theme) => ({
-  label: {
-    marginLeft: "4px",
-    color: grey,
-    "&.Mui-focused": {
-      color: grey,
-    },
-  },
   select: {
     minWidth: "200px",
-    width: "40vw",
+    width: "30vw",
     background: "white",
     color: grey[600],
     borderColor: purple,
@@ -53,7 +46,7 @@ const useBorderSelectStyles = makeStyles((theme) => ({
 }));
 
 const formControl = {
-  margin: " 0 3vw",
+  margin: " 0 7vw",
 };
 
 const BorderSelect = () => {
@@ -63,11 +56,11 @@ const BorderSelect = () => {
     setVal(event.target.value);
   };
 
-  const borderSelectClasses = useBorderSelectStyles();
+  const classes = useBorderSelectStyles();
 
   const menuProps = {
     classes: {
-      list: borderSelectClasses.list,
+      list: classes.list,
     },
     anchorOrigin: {
       vertical: "bottom",
@@ -81,18 +74,14 @@ const BorderSelect = () => {
   };
 
   const iconComponent = (props) => {
-    return (
-      <ExpandMoreIcon
-        className={props.className + " " + borderSelectClasses.icon}
-      />
-    );
+    return <ExpandMoreIcon className={props.className + " " + classes.icon} />;
   };
 
   return (
     <FormControl style={formControl}>
       <Select
         disableUnderline
-        classes={{ root: borderSelectClasses.select }}
+        classes={{ root: classes.select }}
         labelId="inputLabel"
         IconComponent={iconComponent}
         MenuProps={menuProps}

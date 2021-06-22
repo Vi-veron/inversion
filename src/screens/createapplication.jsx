@@ -1,7 +1,7 @@
 import AppBar from "../components/appbar";
-import { Typography, makeStyles, Paper } from "@material-ui/core";
+import { Typography, makeStyles, Paper, Button } from "@material-ui/core";
 import BorderSelect from "../components/select";
-import { grey } from "@material-ui/core/colors";
+import { grey, green } from "@material-ui/core/colors";
 import CurrencyInput from "../components/currencytextfield";
 
 const useStyles = makeStyles((theme) => ({
@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 275,
   },
   header: {
-    margin: "3vw 3vw",
+    margin: "3vw 7vw",
 
     fontSize: "3vh",
     color: grey[800],
@@ -19,6 +19,30 @@ const useStyles = makeStyles((theme) => ({
     width: "50vw",
     minWidth: 300,
     paddingLeft: 24,
+    paddingBottom: "4vw",
+    marginTop: "10vh",
+  },
+  fundLabel: {
+    margin: " 0 7vw",
+    paddingTop: "40px",
+    paddingBottom: "8px",
+    fontSize: "2.2vh",
+    color: grey[800],
+    fontWeight: 400,
+  },
+  nextBtn: {
+    backgroundColor: green[700],
+    padding: "10px  30px",
+    marginTop: "8vh",
+    color: "#fff",
+    "&:hover": {
+      backgroundColor: green[800],
+    },
+  },
+  btnWrapper: {
+    display: "flex",
+    justifyContent: "flex-end",
+    marginRight: "10vw",
   },
 }));
 
@@ -39,19 +63,11 @@ export default function CreateApplication() {
         <Paper className={classes.container}>
           <Typography className={classes.header}>Make Investments</Typography>
           <BorderSelect />
-          <Typography
-            style={{
-              margin: " 0 3vw",
-              paddingTop: "40px",
-              paddingBottom: "8px",
-              fontSize: "2vh",
-              color: grey[800],
-              fontWeight: 400,
-            }}
-          >
-            Fund Account
-          </Typography>
+          <Typography className={classes.fundLabel}>Fund Account</Typography>
           <CurrencyInput />
+          <div className={classes.btnWrapper}>
+            <Button className={classes.nextBtn}>Next</Button>
+          </div>
         </Paper>
       </div>
     </div>

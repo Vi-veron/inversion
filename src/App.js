@@ -11,13 +11,9 @@ function App() {
       <Router>
         <Switch>
           <Route path="/dashboard" exact component={Dashboard} />
-          <Route path="/register" exact component={Signup} />
-          <Route path="/login" exact component={Login} />
-          <Route
-            path="/createapplication"
-            exact
-            component={CreateApplication}
-          />
+          <Route path="/register" component={Signup} />
+          <Route path="/login" component={Login} />
+          <Route path="/createapplication" component={CreateApplication} />
         </Switch>
       </Router>
     </div>

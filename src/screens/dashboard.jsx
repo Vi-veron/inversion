@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
 const cardStyle = {
   display: "flex",
   justifyContent: "center",
-  margin: "2em",
-  minWidth: 170,
+  marginTop: "8%",
+  minWidth: 300,
 };
 
 function Dashboard() {

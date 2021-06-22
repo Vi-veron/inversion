@@ -1,3 +1,4 @@
+import React from "react";
 import {
   makeStyles,
   Hidden,
@@ -6,8 +7,12 @@ import {
   TextField,
   Button,
   Container,
+  IconButton,
+  OutlinedInput,
+  InputAdornment,
 } from "@material-ui/core/";
 import { Link } from "react-router-dom";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
     textAlign: "left",
     color: "#292C30",
     fontWeight: 500,
-    marginTop: "12rem",
+    marginTop: "30%",
     minWidth: "320px",
   },
   subheader: {
@@ -131,6 +136,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 3,
     minWidth: "280px",
   },
+  passwordStyle: {
+    minWidth: "320px",
+    width: "100%",
+  },
   checkbox: {
     minWidth: "320px",
   },
@@ -147,6 +156,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Login() {
   const classes = useStyles();
+
+  const [values, setValues] = React.useState({
+    amount: "",
+    password: "",
+    weight: "",
+    weightRange: "",
+    showPassword: false,
+  });
+
+  const handleChange = (prop) => (event) => {
+    setValues({ ...values, [prop]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setValues({ ...values, showPassword: !values.showPassword });
+  };
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
 
   return (
     <div className={classes.root}>
@@ -215,14 +243,28 @@ export default function Login() {
 
               <Grid className={classes.gridStyle} item xs={12}>
                 <label className={classes.labelStyle}>Password</label>
-                <TextField
-                  variant="outlined"
-                  required
-                  fullWidth
-                  name="password"
-                  type="password"
-                  id="password"
-                  autoComplete="current-password"
+                <OutlinedInput
+                  id="outlined-adornment-password"
+                  type={values.showPassword ? "text" : "password"}
+                  value={values.password}
+                  className={classes.passwordStyle}
+                  onChange={handleChange("password")}
+                  endAdornment={
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {values.showPassword ? (
+                          <Visibility />
+                        ) : (
+                          <VisibilityOff />
+                        )}
+                      </IconButton>
+                    </InputAdornment>
+                  }
                 />
               </Grid>
 
