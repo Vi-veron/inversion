@@ -1,18 +1,26 @@
 import React from "react";
 import { Typography, MenuItem, Menu, IconButton } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
+import TrendingUpIcon from "@material-ui/icons/TrendingUp";
+import SettingsIcon from "@material-ui/icons/Settings";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const barStyle = {
   color: "#555",
   display: "flex",
   justifyContent: "space-between",
-  margin: "2em",
+  padding: "2%",
+  height: "10vh",
 };
 
 const logoStyle = {
   fontFamily: "Brush Script MT",
   color: "#42275a",
   fontSize: 30,
+};
+
+const menuItemStyle = {
+  padding: 10,
 };
 
 export default function AppBar() {
@@ -43,20 +51,33 @@ export default function AppBar() {
         id="menu-appbar"
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          vertical: "bottom",
+          horizontal: "center",
         }}
         keepMounted
         transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
+          vertical: "bottom",
+          horizontal: "center",
         }}
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Settings</MenuItem>
+        <MenuItem onClick={handleClose} style={menuItemStyle}>
+          <AccountCircle /> <span style={{ paddingLeft: 10 }}> Profile</span>
+        </MenuItem>
+        <MenuItem onClick={handleClose} style={menuItemStyle}>
+          <TrendingUpIcon />{" "}
+          <span style={{ paddingLeft: 10 }}> My investments</span>
+        </MenuItem>
+        <MenuItem onClick={handleClose} style={menuItemStyle}>
+          <SettingsIcon />
+          <span style={{ paddingLeft: 10 }}> Settings</span>
+        </MenuItem>
+
+        <MenuItem onClick={handleClose} style={menuItemStyle}>
+          <ExitToAppIcon />
+          <span style={{ paddingLeft: 10 }}> Log out</span>
+        </MenuItem>
       </Menu>
     </div>
   );

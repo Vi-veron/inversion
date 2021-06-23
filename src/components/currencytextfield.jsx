@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core";
 
 const textfieldStyle = {
   margin: " 0 7vw",
-  minWidth: "200px",
+  minWidth: "230px",
   width: "32.8vw",
 };
 
@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CurrencyInput() {
   const [value, setValue] = React.useState();
-  const isValid = value < 1000;
+  const isValid = value < 100000;
   const classes = useStyles();
   return (
     <div>
@@ -39,7 +39,7 @@ export default function CurrencyInput() {
         currencySymbol="&#x20a6;"
         onChange={(e, value) => setValue(value)}
         error={isValid}
-        helperText={isValid && "minimum amount is 100,000"}
+        helperText={isValid && "minimum amount is 100,000 naira"}
         decimalCharacter="."
         decimalPlaces={2}
         placeholder="100,000.00"

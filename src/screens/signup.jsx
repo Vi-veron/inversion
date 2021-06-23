@@ -136,10 +136,10 @@ const useStyles = makeStyles((theme) => ({
   },
   phoneInputStyle: {
     padding: 18,
-    width: "90%",
+    width: "100%",
     border: "1px solid #ccc",
     borderRadius: 3,
-    minWidth: "280px",
+    minWidth: "320px",
     "&:hover": {
       border: "1px solid #111",
     },
@@ -168,10 +168,7 @@ export default function SignUp() {
 
   const [value, setValue] = useState();
   const [values, setValues] = React.useState({
-    amount: "",
     password: "",
-    weight: "",
-    weightRange: "",
     showPassword: false,
   });
 

@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Dashboard from "./screens/dashboard";
 import Signup from "./screens/signup";
 import Login from "./screens/login";
-import CreateApplication from "./screens/createapplication";
+import CreateInvestment from "./screens/createinvestment";
+import Success from "./screens/success";
+import Failure from "./screens/failure";
 
 function App() {
   return (
@@ -13,7 +15,9 @@ function App() {
           <Route path="/dashboard" exact component={Dashboard} />
           <Route path="/register" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/createapplication" component={CreateApplication} />
+          <Route path="/create-investment" component={CreateInvestment} />
+          <Route path="/success" component={Success} />
+          <Route path="/failure" component={Failure} />
         </Switch>
       </Router>
     </div>

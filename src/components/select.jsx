@@ -8,7 +8,7 @@ import { grey, purple } from "@material-ui/core/colors";
 
 const useBorderSelectStyles = makeStyles((theme) => ({
   select: {
-    minWidth: "200px",
+    minWidth: "180px",
     width: "30vw",
     background: "white",
     color: grey[600],

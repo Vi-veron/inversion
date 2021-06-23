@@ -14,19 +14,18 @@ import {
 import { Link } from "react-router-dom";
 
 const columns = [
-  { id: "investor", label: "Investor", minWidth: 80 },
+  { id: "investor", label: "Investor", minWidth: 150 },
 
   {
     id: "amount",
     label: "Amount",
-    minWidth: 100,
-
-    align: "right",
+    minWidth: 150,
+    align: "center",
   },
   {
     id: "date",
     label: "Date",
-    minWidth: 100,
+    minWidth: 150,
     align: "right",
   },
 ];
@@ -44,22 +43,29 @@ const rows = [
   createData("5", "Kay Matthew", "500,000.00", "09 / 12 / 2020"),
   createData("6", "Nuel Freeman", "450,000.00", "15 / 02 /2021"),
   createData("7", "Kiara Smith ", "565,000.00", "18 / 05 / 2021"),
-  createData("8", "James Veron", "650,000.00", "06 / 10 / 2020"),
-  createData("9", "Sonia Joe", "234,000.00", "12 / 12 / 2020"),
-  createData("10", "Kay Matthew", "500,000.00", "09 / 12 / 2020"),
-  createData("11", "Nuel Freeman", "450,000.00", "15 / 02 /2021"),
-  createData("12", "Kiara Smith ", "565,000.00", "18 / 05 / 2021"),
-  createData("13", "James Veron", "650,000.00", "06 / 10 / 2020"),
-  createData("14", "Sonia Joe", "234,000.00", "12 / 12 / 2020"),
+  createData("8", "James Veron", "650,000.00", "06 / 10 / 2022"),
+  createData("9", "Sonia Joe", "234,000.00", "12 / 12 / 2022"),
+  createData("10", "Kay Matthew", "500,000.00", "09 / 12 / 2022"),
+  createData("11", "Nuel Freeman", "450,000.00", "15 / 02 /2022"),
+  createData("12", "Kiara Smith ", "565,000.00", "18 / 05 / 2022"),
+  createData("13", "James Veron", "650,000.00", "06 / 10 / 2022"),
+  createData("14", "Sonia Joe", "234,000.00", "12 / 12 / 2022"),
 ];
 
 const useStyles = makeStyles({
   root: {
     width: "60vw",
     minWidth: "300px",
+    marginTop: "12vh",
   },
   container: {
-    maxHeight: 440,
+    maxHeight: "60vh",
+  },
+  headerText: {
+    fontSize: "120%",
+    fontWeight: 700,
+    minWidth: 310,
+    color: "#333",
   },
   tableHead: {
     display: "flex",
@@ -68,19 +74,37 @@ const useStyles = makeStyles({
   },
   linkStyle: {
     textDecoration: "none",
-    color: "#fff",
+    color: "#fefefe",
     backgroundColor: "#42275a",
+  },
+  stickyHead: {
+    minWidth: columns.minWidth,
+    padding: "2% 4%",
+    fontSize: "110%",
+    fontWeight: 600,
+    backgroundColor: "#90708C",
+  },
+  tableData: {
+    fontSize: "90%",
+    padding: "2% 4%",
+    fontWeight: 500,
+    minWidth: 150,
+    "&:hover": {
+      color: "#90708C",
+      backgroundColor: "#E7D9E7",
+    },
   },
 });
 
 const btnStyle = {
   justifyContent: "flex-end",
-  marginLeft: 160,
   backgroundColor: "#42275a",
-  color: "#fff",
+  color: "#fefefe",
   borderRadius: 5,
   cursor: "pointer",
-  fontSize: "90%",
+  fontSize: "100%",
+  fontWeight: 700,
+  padding: "10px",
 };
 
 export default function StickyHeadTable() {
@@ -101,9 +125,11 @@ export default function StickyHeadTable() {
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <div className={classes.tableHead}>
-          <Typography>Manage Investments</Typography>
+          <Typography className={classes.headerText}>
+            Manage Investments
+          </Typography>
           <button style={btnStyle}>
-            <Link to="/createapplication" className={classes.linkStyle}>
+            <Link to="/create-investment" className={classes.linkStyle}>
               Create Investments
             </Link>
           </button>
@@ -115,7 +141,7 @@ export default function StickyHeadTable() {
                 <TableCell
                   key={column.id}
                   align={column.align}
-                  style={{ minWidth: column.minWidth }}
+                  className={classes.stickyHead}
                 >
                   {column.label}
                 </TableCell>
@@ -131,7 +157,11 @@ export default function StickyHeadTable() {
                     {columns.map((column) => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell
+                          key={column.id}
+                          align={column.align}
+                          className={classes.tableData}
+                        >
                           {column.format && typeof value === "number"
                             ? column.format(value)
                             : value}
