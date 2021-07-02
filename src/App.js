@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./screens/home";
 import Dashboard from "./screens/dashboard";
 import Signup from "./screens/signup";
 import Login from "./screens/login";
@@ -12,7 +13,8 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/dashboard" exact component={Dashboard} />
+          <Route path="/" exact component={Home} />
+          <Route path="/dashboard" component={Dashboard} />
           <Route path="/register" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/create-investment" component={CreateInvestment} />

@@ -13,6 +13,9 @@ import {
 } from "@material-ui/core/";
 import { Link } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -136,10 +139,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 3,
     minWidth: "280px",
   },
-  passwordStyle: {
-    minWidth: "320px",
-    width: "100%",
-  },
+
   checkbox: {
     minWidth: "320px",
   },
@@ -154,14 +154,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const passwordStyle = {
+  width: "100%",
+};
+
 export default function Login() {
   const classes = useStyles();
 
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().required("Email is required").email("Email is invalid"),
+    password: Yup.string()
+      .required("Password is required")
+      .min(6, "Password must be at least 6 characters")
+      .max(40, "Password must not exceed 40 characters"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const onSubmit = (data) => {
+    console.log(JSON.stringify(data, null, 2));
+  };
+
   const [values, setValues] = React.useState({
-    amount: "",
     password: "",
-    weight: "",
-    weightRange: "",
     showPassword: false,
   });
 
@@ -202,81 +224,96 @@ export default function Login() {
             maxWidth="sm"
           >
             <div>
-              <Typography className={classes.header}>
-                Log Into Your Account
-              </Typography>
-              <Typography className={classes.subheader}>
-                Don't have an account?{" "}
-                <Link className={classes.linkStyle} to="/register">
-                  {" "}
-                  Sign Up
-                </Link>
-              </Typography>
-              <Button className={classes.googleBtn}>
-                <span>
-                  <img
-                    alt="google logo"
-                    src="https://img.icons8.com/fluent/20/000000/google-logo.png"
-                    className={classes.googleLogo}
+              <form onSubmit={handleSubmit(onSubmit)}>
+                <Typography className={classes.header}>
+                  Log Into Your Account
+                </Typography>
+                <Typography className={classes.subheader}>
+                  Don't have an account?{" "}
+                  <Link className={classes.linkStyle} to="/register">
+                    {" "}
+                    Sign Up
+                  </Link>
+                </Typography>
+                <Button className={classes.googleBtn}>
+                  <span>
+                    <img
+                      alt="google logo"
+                      src="https://img.icons8.com/fluent/20/000000/google-logo.png"
+                      className={classes.googleLogo}
+                    />
+                  </span>
+                  <span className={classes.googleBtnText}>
+                    {" "}
+                    Log in with Google
+                  </span>
+                </Button>
+                <h2 className={classes.line}>
+                  <span className={classes.lineText}>or</span>
+                </h2>
+
+                <Grid className={classes.gridStyle} item xs={12}>
+                  <label className={classes.labelStyle}>Email Address</label>
+                  <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="email"
+                    name="email"
+                    autoComplete="email"
+                    {...register("email")}
+                    className={`form-control ${
+                      errors.email ? "is-invalid" : ""
+                    }`}
                   />
-                </span>
-                <span className={classes.googleBtnText}>
-                  {" "}
-                  Log in with Google
-                </span>
-              </Button>
-              <h2 className={classes.line}>
-                <span className={classes.lineText}>or</span>
-              </h2>
+                  <div className="invalid-feedback">
+                    {errors.email?.message}
+                  </div>
+                </Grid>
 
-              <Grid className={classes.gridStyle} item xs={12}>
-                <label className={classes.labelStyle}>Email Address</label>
-                <TextField
-                  variant="outlined"
-                  required
+                <Grid className={classes.gridStyle} item xs={12}>
+                  <label className={classes.labelStyle}>Password</label>
+                  <OutlinedInput
+                    id="outlined-adornment-password"
+                    type={values.showPassword ? "text" : "password"}
+                    style={passwordStyle}
+                    onChange={handleChange("password")}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={handleClickShowPassword}
+                          onMouseDown={handleMouseDownPassword}
+                          edge="end"
+                        >
+                          {values.showPassword ? (
+                            <Visibility />
+                          ) : (
+                            <VisibilityOff />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                    {...register("password")}
+                    className={`form-control ${
+                      errors.password ? "is-invalid" : ""
+                    }`}
+                  />
+                  <div className="invalid-feedback">
+                    {errors.password?.message}
+                  </div>
+                </Grid>
+
+                <Button
+                  type="submit"
                   fullWidth
-                  id="email"
-                  name="email"
-                  autoComplete="email"
-                />
-              </Grid>
-
-              <Grid className={classes.gridStyle} item xs={12}>
-                <label className={classes.labelStyle}>Password</label>
-                <OutlinedInput
-                  id="outlined-adornment-password"
-                  type={values.showPassword ? "text" : "password"}
-                  value={values.password}
-                  className={classes.passwordStyle}
-                  onChange={handleChange("password")}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={handleClickShowPassword}
-                        onMouseDown={handleMouseDownPassword}
-                        edge="end"
-                      >
-                        {values.showPassword ? (
-                          <Visibility />
-                        ) : (
-                          <VisibilityOff />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                />
-              </Grid>
-
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-              >
-                Log In
-              </Button>
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                >
+                  Log In
+                </Button>
+              </form>
             </div>
           </Container>
         </Grid>

@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Link } from "react-router-dom";
 
 const Modal = ({ isShowing, hide }) =>
   isShowing
@@ -26,13 +25,7 @@ const Modal = ({ isShowing, hide }) =>
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <p>Hello, I'm a modal.</p>
-              <Link to="/success">
-                <p>Link to success page</p>
-              </Link>
-              <Link to="/failure">
-                <p>Link to failure page</p>
-              </Link>
+              <h1>payreflect</h1>
             </div>
           </div>
         </React.Fragment>,
