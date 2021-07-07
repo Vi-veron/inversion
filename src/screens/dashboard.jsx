@@ -1,7 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "../components/appbar";
-import EnhancedTable from "../components/table";
+import AppBar from "../components/appBar";
+import EnhancedTable from "../components/Table";
 
 const useStyles = makeStyles((theme) => ({
   root: {

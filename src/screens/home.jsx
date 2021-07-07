@@ -1,16 +1,18 @@
 import React from "react";
 import NavBar from "../components/navBar";
-import SpacingGrid from "../components/spacingGrid";
-import Footer from "../components/footer";
+import SpacingGrid from "../components/SpacingGrid";
+import Footer from "../components/Footer";
 import { Typography } from "@material-ui/core";
 
 const container = {
   root: {
     width: "100vw",
-    minWidth: "300",
+    minWidth: "300px",
+    height: "100vh",
   },
   infoCard: {
     width: "100vw",
+    minWidth: "300px",
     background: "#333",
     height: "46vh",
     display: "flex",

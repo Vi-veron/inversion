@@ -1,8 +1,8 @@
-import AppBar from "../components/appbar";
+import AppBar from "../components/appBar";
 import { Typography, makeStyles, Paper, Button } from "@material-ui/core";
-import BorderSelect from "../components/select";
+import BorderSelect from "../components/Select";
 import { grey, green } from "@material-ui/core/colors";
-import CurrencyInput from "../components/currencytextfield";
+import CurrencyInput from "../components/CurrencyTextfield";
 import Modal from "../components/modal/Modal";
 import useModal from "../components/modal/useModal";
 import "../App.css";

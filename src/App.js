@@ -1,12 +1,12 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./screens/home";
-import Dashboard from "./screens/dashboard";
-import Signup from "./screens/signup";
-import Login from "./screens/login";
-import CreateInvestment from "./screens/createinvestment";
-import Success from "./screens/success";
-import Failure from "./screens/failure";
+import Home from "./screens/Home";
+import Dashboard from "./screens/Dashboard";
+import Signup from "./screens/Signup";
+import Login from "./screens/Login";
+import CreateInvestment from "./screens/CreateInvestment";
+import Success from "./screens/Success";
+import Failure from "./screens/Failure";
 
 function App() {
   return (

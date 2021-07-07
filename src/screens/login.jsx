@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   makeStyles,
   Hidden,
@@ -16,6 +16,8 @@ import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import axios from "axios";
+import { storeAuthToken } from "../utils/authToken";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -158,7 +160,7 @@ const passwordStyle = {
   width: "100%",
 };
 
-export default function Login() {
+const Login = (props) => {
   const classes = useStyles();
 
   const validationSchema = Yup.object().shape({
@@ -178,8 +180,31 @@ export default function Login() {
     resolver: yupResolver(validationSchema),
   });
 
+  const [message, setMessage] = useState("");
+
   const onSubmit = (data) => {
-    console.log(JSON.stringify(data, null, 2));
+    setMessage("");
+
+    axios
+      .post("https://darthvadar.herokuapp.com/api/auth/login", {
+        ...data,
+      })
+      .then(
+        (response) => {
+          storeAuthToken(response.data.token);
+          props.history.push("/dashboard");
+        },
+        (error) => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
+
+          setMessage(resMessage);
+        }
+      );
   };
 
   const [values, setValues] = React.useState({
@@ -313,6 +338,13 @@ export default function Login() {
                 >
                   Log In
                 </Button>
+                {message && (
+                  <div className="form-group">
+                    <div className="alert alert-danger" role="alert">
+                      {message}
+                    </div>
+                  </div>
+                )}
               </form>
             </div>
           </Container>
@@ -320,4 +352,5 @@ export default function Login() {
       </Grid>
     </div>
   );
-}
+};
+export default Login;

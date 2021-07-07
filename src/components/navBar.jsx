@@ -36,15 +36,13 @@ export default function NavBar() {
           Home
         </NavItem>
         <NavItem>About Us</NavItem>
-        <NavItem as={Link} to={"/dashboard"}>
-          Dashboard
-        </NavItem>
+
         <NavItem>Contacts</NavItem>
-        <NavItem as={Link} to={"/register"}>
-          Signup
-        </NavItem>
         <NavItem as={Link} to={"/login"}>
           Login
+        </NavItem>
+        <NavItem as={Link} to={"/register"}>
+          Signup
         </NavItem>
       </span>
     </NavMenu>
