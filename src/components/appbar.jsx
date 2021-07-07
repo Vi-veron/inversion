@@ -4,6 +4,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { Link } from "react-router-dom";
 
 const barStyle = {
   color: "#555",
@@ -21,6 +22,10 @@ const logoStyle = {
 
 const menuItemStyle = {
   padding: 10,
+};
+const linkStyle = {
+  textDecoration: "none",
+  color: "#111",
 };
 
 export default function AppBar() {
@@ -63,7 +68,10 @@ export default function AppBar() {
         onClose={handleClose}
       >
         <MenuItem onClick={handleClose} style={menuItemStyle}>
-          <AccountCircle /> <span style={{ paddingLeft: 10 }}> Profile</span>
+          <AccountCircle />
+          <Link to="/profile" style={linkStyle}>
+            <span style={{ paddingLeft: 10 }}> Profile</span>
+          </Link>
         </MenuItem>
         <MenuItem onClick={handleClose} style={menuItemStyle}>
           <TrendingUpIcon />{" "}

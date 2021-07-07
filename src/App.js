@@ -7,6 +7,7 @@ import Login from "./screens/Login";
 import CreateInvestment from "./screens/CreateInvestment";
 import Success from "./screens/Success";
 import Failure from "./screens/Failure";
+import Profile from "./screens/Profile";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/create-investment" component={CreateInvestment} />
           <Route path="/success" component={Success} />
           <Route path="/failure" component={Failure} />
+          <Route path="/profile" component={Profile} />
         </Switch>
       </Router>
     </div>
