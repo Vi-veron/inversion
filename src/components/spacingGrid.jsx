@@ -14,11 +14,12 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     height: "36vh",
+    minHeight: "350px",
     width: "33.3vw",
     minWidth: 375,
     textAlign: "center",
-    paddingLeft: 60,
-    paddingRight: 60,
+    paddingLeft: 40,
+    paddingRight: 40,
     paddingTop: 60,
     border: "0.5px solid #eee",
   },
@@ -39,7 +40,7 @@ export default function SpacingGrid() {
         <Grid container>
           <Grid item>
             <div className={classes.paper}>
-              <WavesOutlined style={{ fontSize: 40, color: "#333" }} />
+              <WavesOutlined style={{ fontSize: 40, color: "#42275a" }} />
               <Typography className={classes.header}>Fish Farming</Typography>
               <Typography style={{ paddingTop: 10, paddingBottom: 40 }}>
                 Involves building earthen, concrete or tarpaulin ponds, stocking
@@ -52,7 +53,7 @@ export default function SpacingGrid() {
 
           <Grid item>
             <div className={classes.paper}>
-              <Eco style={{ fontSize: 40, color: "#333" }} />
+              <Eco style={{ fontSize: 40, color: "#42275a" }} />
               <Typography className={classes.header}>Milk Factory</Typography>
               <Typography style={{ paddingTop: 10, paddingBottom: 20 }}>
                 Nigeria’s annual milk production is estimated at 500,000 tonnes
@@ -65,7 +66,7 @@ export default function SpacingGrid() {
 
           <Grid item>
             <div className={classes.paper}>
-              <ViewComfyOutlined style={{ fontSize: 40, color: "#333" }} />
+              <ViewComfyOutlined style={{ fontSize: 40, color: "#42275a" }} />
 
               <Typography className={classes.header}>
                 Poultry Farming

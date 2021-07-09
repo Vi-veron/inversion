@@ -19,7 +19,6 @@ const navBarStyle = {
 
 const activeStyle = {
   textDecoration: "none",
-  color: "#42275a",
 };
 
 export default function NavBar() {

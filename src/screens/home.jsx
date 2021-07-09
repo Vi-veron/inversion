@@ -13,7 +13,7 @@ const container = {
   infoCard: {
     width: "100vw",
     minWidth: "300px",
-    background: "#333",
+    background: "linear-gradient(195.95deg, #B5179E 0%, #4895EF 100%), #C4C4C4",
     height: "46vh",
     display: "flex",
     flexDirection: "column",
@@ -35,7 +35,7 @@ const container = {
   btnStyle: {
     padding: "10px 20px",
     marginTop: "2vh",
-    color: "#333",
+    color: "#42275a",
     fontWeight: 700,
     fontSize: 20,
     cursor: "pointer",

@@ -5,6 +5,8 @@ import TrendingUpIcon from "@material-ui/icons/TrendingUp";
 import SettingsIcon from "@material-ui/icons/Settings";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { Link } from "react-router-dom";
+import { removeAuthToken } from "../utils/authToken";
+import axios from "axios";
 
 const barStyle = {
   color: "#555",
@@ -28,7 +30,7 @@ const linkStyle = {
   color: "#111",
 };
 
-export default function AppBar() {
+export default function AppBar({ history }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -38,6 +40,13 @@ export default function AppBar() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const logOut = () => {
+    axios.post("https://darthvadar.herokuapp.com/api/auth/logout").then(() => {
+      removeAuthToken();
+      history.push("/home");
+    });
   };
 
   return (
@@ -67,22 +76,22 @@ export default function AppBar() {
         open={open}
         onClose={handleClose}
       >
-        <MenuItem onClick={handleClose} style={menuItemStyle}>
-          <AccountCircle />
-          <Link to="/profile" style={linkStyle}>
+        <Link to="/profile" style={linkStyle}>
+          <MenuItem style={menuItemStyle}>
+            <AccountCircle />
             <span style={{ paddingLeft: 10 }}> Profile</span>
-          </Link>
-        </MenuItem>
-        <MenuItem onClick={handleClose} style={menuItemStyle}>
+          </MenuItem>
+        </Link>
+        <MenuItem style={menuItemStyle}>
           <TrendingUpIcon />{" "}
           <span style={{ paddingLeft: 10 }}> My investments</span>
         </MenuItem>
-        <MenuItem onClick={handleClose} style={menuItemStyle}>
+        <MenuItem style={menuItemStyle}>
           <SettingsIcon />
           <span style={{ paddingLeft: 10 }}> Settings</span>
         </MenuItem>
 
-        <MenuItem onClick={handleClose} style={menuItemStyle}>
+        <MenuItem onClick={logOut} style={menuItemStyle}>
           <ExitToAppIcon />
           <span style={{ paddingLeft: 10 }}> Log out</span>
         </MenuItem>

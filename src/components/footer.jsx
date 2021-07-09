@@ -40,9 +40,30 @@ export default function Footer() {
       <Typography variant="h5" style={footerStyle.text}>
         Share:
       </Typography>
-      <Facebook style={{ paddingTop: 20, fontSize: 60, cursor: "pointer" }} />
-      <Instagram style={{ paddingTop: 20, fontSize: 60, cursor: "pointer" }} />
-      <Twitter style={{ paddingTop: 20, fontSize: 60, cursor: "pointer" }} />
+      <Facebook
+        style={{
+          color: "#333",
+          paddingTop: 20,
+          fontSize: 60,
+          cursor: "pointer",
+        }}
+      />
+      <Instagram
+        style={{
+          color: "#333",
+          paddingTop: 20,
+          fontSize: 60,
+          cursor: "pointer",
+        }}
+      />
+      <Twitter
+        style={{
+          color: "#333",
+          paddingTop: 20,
+          fontSize: 60,
+          cursor: "pointer",
+        }}
+      />
 
       {/* <Copyright style={footerStyle.copyright} /> */}
     </div>
