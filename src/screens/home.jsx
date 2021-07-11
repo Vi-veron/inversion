@@ -7,12 +7,12 @@ import { Typography } from "@material-ui/core";
 const container = {
   root: {
     width: "100vw",
-    minWidth: "300px",
+    minWidth: "375px",
     height: "100vh",
   },
   infoCard: {
     width: "100vw",
-    minWidth: "300px",
+    minWidth: "100%",
     background: "linear-gradient(195.95deg, #B5179E 0%, #4895EF 100%), #C4C4C4",
     height: "46vh",
     display: "flex",

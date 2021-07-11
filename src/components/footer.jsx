@@ -1,8 +1,14 @@
 import { Typography } from "@material-ui/core";
-import { Facebook, Instagram, Twitter } from "@material-ui/icons";
 // import { Link } from "react-router-dom";
+import React from "react";
 
-const footerStyle = {
+import {
+  SocialProvider,
+  SocialLink,
+} from "@mui-treasury/components/socialLink";
+import { useZoomSocialLinkStyles } from "@mui-treasury/styles/socialLink/zoom";
+
+const footer = {
   container: {
     display: "flex",
     flexDirection: "row",
@@ -14,6 +20,7 @@ const footerStyle = {
   },
   link: {
     textDecoration: "none",
+    paddingTop: 30,
   },
   copyright: {
     display: "flex",
@@ -36,34 +43,33 @@ const footerStyle = {
 
 export default function Footer() {
   return (
-    <div style={footerStyle.container}>
-      <Typography variant="h5" style={footerStyle.text}>
+    <div style={footer.container}>
+      <Typography variant="h5" style={footer.text}>
         Share:
       </Typography>
-      <Facebook
-        style={{
-          color: "#333",
-          paddingTop: 20,
-          fontSize: 60,
-          cursor: "pointer",
-        }}
-      />
-      <Instagram
-        style={{
-          color: "#333",
-          paddingTop: 20,
-          fontSize: 60,
-          cursor: "pointer",
-        }}
-      />
-      <Twitter
-        style={{
-          color: "#333",
-          paddingTop: 20,
-          fontSize: 60,
-          cursor: "pointer",
-        }}
-      />
+      <SocialProvider useStyles={useZoomSocialLinkStyles}>
+        <SocialLink
+          brand={"Facebook"}
+          href={"https://www.facebook.com"}
+          style={footer.link}
+        />
+        <SocialLink
+          brand={"Twitter"}
+          href={"https://twitter.com"}
+          style={footer.link}
+        />
+        <SocialLink brand={"Instagram"} href={""} style={footer.link} />
+        <SocialLink
+          brand={"LinkedIn"}
+          href={"https://www.linkedin.com"}
+          style={footer.link}
+        />
+        <SocialLink
+          brand={"Whatsapp"}
+          href={"https://www.whatsapp.com"}
+          style={footer.link}
+        />
+      </SocialProvider>
 
       {/* <Copyright style={footerStyle.copyright} /> */}
     </div>

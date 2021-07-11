@@ -40,7 +40,7 @@ export default function SpacingGrid() {
         <Grid container>
           <Grid item>
             <div className={classes.paper}>
-              <WavesOutlined style={{ fontSize: 40, color: "#42275a" }} />
+              <WavesOutlined style={{ fontSize: 40, color: "#333" }} />
               <Typography className={classes.header}>Fish Farming</Typography>
               <Typography style={{ paddingTop: 10, paddingBottom: 40 }}>
                 Involves building earthen, concrete or tarpaulin ponds, stocking
@@ -53,7 +53,7 @@ export default function SpacingGrid() {
 
           <Grid item>
             <div className={classes.paper}>
-              <Eco style={{ fontSize: 40, color: "#42275a" }} />
+              <Eco style={{ fontSize: 40, color: "#333" }} />
               <Typography className={classes.header}>Milk Factory</Typography>
               <Typography style={{ paddingTop: 10, paddingBottom: 20 }}>
                 Nigeria’s annual milk production is estimated at 500,000 tonnes
@@ -66,7 +66,7 @@ export default function SpacingGrid() {
 
           <Grid item>
             <div className={classes.paper}>
-              <ViewComfyOutlined style={{ fontSize: 40, color: "#42275a" }} />
+              <ViewComfyOutlined style={{ fontSize: 40, color: "#333" }} />
 
               <Typography className={classes.header}>
                 Poultry Farming
