@@ -9,6 +9,7 @@ import Success from "./screens/Success";
 import Failure from "./screens/Failure";
 import Profile from "./screens/Profile";
 import MyInvestments from "./screens/MyInvestments";
+import Contact from "./screens/Contact";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
           <Route path="/success" component={Success} />
           <Route path="/failure" component={Failure} />
           <Route path="/profile" component={Profile} />
-          <Route path="/myinvestments" component={MyInvestments} />
+          <Route path="/my-investments" component={MyInvestments} />
+          <Route path="/contact" component={Contact} />
         </Switch>
       </Router>
     </div>

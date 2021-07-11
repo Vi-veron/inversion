@@ -82,10 +82,12 @@ export default function AppBar({ history }) {
             <span style={{ paddingLeft: 10 }}> Profile</span>
           </MenuItem>
         </Link>
-        <MenuItem style={menuItemStyle}>
-          <TrendingUpIcon />{" "}
-          <span style={{ paddingLeft: 10 }}> My investments</span>
-        </MenuItem>
+        <Link to="/my-investments" style={linkStyle}>
+          <MenuItem style={menuItemStyle}>
+            <TrendingUpIcon />{" "}
+            <span style={{ paddingLeft: 10 }}> My investments</span>
+          </MenuItem>
+        </Link>
         <MenuItem style={menuItemStyle}>
           <SettingsIcon />
           <span style={{ paddingLeft: 10 }}> Settings</span>
