@@ -35,10 +35,6 @@ export default function NavBar() {
           Home
         </NavItem>
         <NavItem>About Us</NavItem>
-
-        <NavItem as={Link} to={"/contact"}>
-          Contacts
-        </NavItem>
         <NavItem as={Link} to={"/login"}>
           Login
         </NavItem>

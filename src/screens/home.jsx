@@ -3,6 +3,7 @@ import NavBar from "../components/navBar";
 import SpacingGrid from "../components/SpacingGrid";
 import Footer from "../components/Footer";
 import { Typography } from "@material-ui/core";
+import { Link } from "react-router-dom";
 
 const container = {
   root: {
@@ -13,7 +14,7 @@ const container = {
   infoCard: {
     width: "100vw",
     minWidth: "100%",
-    background: "linear-gradient(195.95deg, #B5179E 0%, #4895EF 100%), #C4C4C4",
+    backgroundColor: "#42275a",
     height: "46vh",
     display: "flex",
     flexDirection: "column",
@@ -54,7 +55,9 @@ export default function Home() {
         <Typography style={container.infoSubheaderText}>
           Maximum safety and stability for your principal
         </Typography>
-        <button style={container.btnStyle}>Contact Us</button>
+        <Link to="/contact">
+          <button style={container.btnStyle}>Contact Us</button>
+        </Link>
       </div>
       <React.Fragment>
         <SpacingGrid />

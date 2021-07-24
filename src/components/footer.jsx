@@ -1,7 +1,5 @@
 import { Typography } from "@material-ui/core";
-// import { Link } from "react-router-dom";
 import React from "react";
-
 import {
   SocialProvider,
   SocialLink,
@@ -21,6 +19,7 @@ const footer = {
   link: {
     textDecoration: "none",
     paddingTop: 30,
+    color: "#42275a",
   },
   copyright: {
     display: "flex",

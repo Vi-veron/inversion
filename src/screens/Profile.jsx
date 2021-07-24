@@ -91,7 +91,7 @@ function Profile() {
         <Typography style={profile.logo}>Inversion</Typography>
         <EmailOutlinedIcon style={profile.inbox} />
       </div>
-      <Grid container className={profile.root}>
+      <Grid container style={profile.root}>
         <Grid item xs={12}>
           <Grid container>
             <Grid item xs={12} sm={3}>

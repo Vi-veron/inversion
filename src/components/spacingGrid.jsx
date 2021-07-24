@@ -22,11 +22,12 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 40,
     paddingTop: 60,
     border: "0.5px solid #eee",
+    color: "#555",
   },
   header: {
     fontWeight: 600,
     fontSize: "1.5em",
-    color: "#222",
+    color: "333",
     paddingTop: 10,
   },
 }));

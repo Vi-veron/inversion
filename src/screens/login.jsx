@@ -72,6 +72,12 @@ const useStyles = makeStyles((theme) => ({
   },
   linkStyle: {
     textDecoration: "none",
+    "&:hover": {
+      color: "#9c27b0",
+    },
+    "&:focus": {
+      color: "#ab47bc",
+    },
   },
   googleBtn: {
     padding: "6px 0",
@@ -146,7 +152,7 @@ const useStyles = makeStyles((theme) => ({
     minWidth: "320px",
   },
   submit: {
-    backgroundColor: "#4361EE",
+    backgroundColor: "#6C63FF",
     margin: "20px 0",
     padding: 8,
     textTransform: "none",
@@ -191,7 +197,7 @@ const Login = (props) => {
       })
       .then(
         (response) => {
-          storeAuthToken(response.data.token);
+          storeAuthToken(response.data.data.token);
           props.history.push("/dashboard");
         },
         (error) => {

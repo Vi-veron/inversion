@@ -25,7 +25,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import axios from "axios";
-import { green } from "@material-ui/core/colors";
+import { green, purple } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,6 +80,12 @@ const useStyles = makeStyles((theme) => ({
   },
   linkStyle: {
     textDecoration: "none",
+    "&:hover": {
+      color: "#9c27b0",
+    },
+    "&:focus": {
+      color: "#ab47bc",
+    },
   },
   googleBtn: {
     padding: "6px 0",
@@ -161,7 +167,7 @@ const useStyles = makeStyles((theme) => ({
   },
   controlLabel: {},
   submit: {
-    backgroundColor: "#4361EE",
+    backgroundColor: "#6C63FF",
     margin: "20px 0",
     padding: 8,
     textTransform: "none",
