@@ -2,14 +2,12 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./screens/Home";
 import Dashboard from "./screens/Dashboard";
-import Signup from "./screens/Signup";
+import Register from "./screens/Register";
 import Login from "./screens/Login";
 import CreateInvestment from "./screens/CreateInvestment";
-import Success from "./screens/Success";
-import Failure from "./screens/Failure";
 import Profile from "./screens/Profile";
-import MyInvestments from "./screens/MyInvestments";
 import Contact from "./screens/Contact";
+import ResetPassword from "./screens/ResetPassword";
 
 function App() {
   return (
@@ -18,14 +16,12 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/dashboard" component={Dashboard} />
-          <Route path="/register" component={Signup} />
+          <Route path="/register" component={Register} />
           <Route path="/login" component={Login} />
           <Route path="/create-investment" component={CreateInvestment} />
-          <Route path="/success" component={Success} />
-          <Route path="/failure" component={Failure} />
           <Route path="/profile" component={Profile} />
-          <Route path="/my-investments" component={MyInvestments} />
           <Route path="/contact" component={Contact} />
+          <Route path="/password/reset" component={ResetPassword} />
         </Switch>
       </Router>
     </div>
