@@ -1,10 +1,10 @@
-import AppBar from "../../components/AppBar";
+import AppBar from "components/AppBar";
 import { Paper, Button, Grid, Hidden } from "@material-ui/core";
-import BorderSelect from "../../components/Select";
-import CurrencyInput from "../../components/Form/CurrencyInput";
-import Modal from "../../components/Modal/Modal";
-import useModal from "../../components/Modal/useModal";
-import Sidebar from "../../components/SideBar";
+import BorderSelect from "components/Select";
+import CurrencyInput from "components/Form/CurrencyInput";
+import Modal from "components/Modal/Modal";
+import useModal from "components/Modal/useModal";
+import Sidebar from "components/SideBar";
 import styles from "./styles";
 
 // const plans = [

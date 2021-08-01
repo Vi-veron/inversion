@@ -5,7 +5,7 @@ import Hero from "../../components/Hero";
 import styles from "./styles";
 import PasswordResetLinkForm from "./components/PasswordResetLinkForm";
 import PasswordResetForm from "./components/PasswordResetForm";
-import useParamSearch from "../../hooks/useParamSearch.js";
+import useParamSearch from "hooks/useParamSearch.js";
 
 function ResetPassword({ history, match }) {
   const classes = styles();

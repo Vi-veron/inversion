@@ -1,13 +1,13 @@
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./screens/Home";
-import Dashboard from "./screens/Dashboard";
-import Register from "./screens/Register";
-import Login from "./screens/Login";
-import CreateInvestment from "./screens/CreateInvestment";
-import Profile from "./screens/Profile";
-import Contact from "./screens/Contact";
-import ResetPassword from "./screens/ResetPassword";
+import Home from "screens/Home";
+import Dashboard from "screens/Dashboard";
+import Register from "screens/Register";
+import Login from "screens/Login";
+import CreateInvestment from "screens/CreateInvestment";
+import Profile from "screens/Profile";
+import Contact from "screens/Contact";
+import ResetPassword from "screens/ResetPassword";
 
 function App() {
   return (

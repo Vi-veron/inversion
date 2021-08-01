@@ -1,8 +1,8 @@
-import EnhancedTable from "../../components/Table";
+import EnhancedTable from "components/Table";
 import { Grid, Hidden } from "@material-ui/core";
 
-import Sidebar from "../../components/SideBar";
-import AppBar from "../../components/AppBar";
+import Sidebar from "components/SideBar";
+import AppBar from "components/AppBar";
 import styles from "./styles";
 
 function Dashboard() {

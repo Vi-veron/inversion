@@ -13,7 +13,7 @@ import {
   OutlinedInput,
   InputAdornment,
 } from "@material-ui/core/";
-import Hero from "../../components/Hero";
+import Hero from "components/Hero";
 import { Link } from "react-router-dom";
 import {
   Visibility,

@@ -10,13 +10,13 @@ import {
   OutlinedInput,
   InputAdornment,
 } from "@material-ui/core/";
-import Hero from "../../components/Hero";
+import Hero from "components/Hero";
 import { Link } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { storeAuthToken } from "../../utils/authToken";
+import { storeAuthToken } from "utils/authToken";
 import styles from "./styles";
 
 const Login = (props) => {

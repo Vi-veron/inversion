@@ -1,7 +1,7 @@
 import React from "react";
-import NavBar from "../../components/NavBar";
-import SpacingGrid from "../../components/SpacingGrid";
-import Footer from "../../components/Footer";
+import NavBar from "components/NavBar";
+import SpacingGrid from "components/SpacingGrid";
+import Footer from "components/Footer";
 import { Typography } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import styles from "./styles";
