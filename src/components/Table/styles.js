@@ -4,27 +4,27 @@ const styles = makeStyles({
   root: {
     width: "74vw",
     minWidth: "350px",
-    marginTop: 140,
+    paddingTop: 100,
     marginLeft: 80,
     backgroundColor: "#fdfdfd",
     "@media (max-width: 420px)": {
-      minWidth: "370px",
+      minWidth: "100vw",
     },
     "@media (max-width: 540px)": {
-      marginTop: 40,
+      paddingTop: 20,
       marginLeft: 30,
-      minWidth: "500px",
+      minWidth: "100vw",
     },
   },
   container: {
-    maxHeight: "100vh",
+    height: "70vh",
     marginTop: 40,
     "@media (max-width: 420px)": {
-      maxHeight: "94vh",
+      // maxHeight: "94vh",
       marginTop: 20,
     },
     "@media (min-width: 540px)": {
-      maxHeight: "60vh",
+      // maxHeight: "60vh",
       marginTop: 20,
     },
   },
@@ -32,10 +32,10 @@ const styles = makeStyles({
     fontSize: "1.8rem",
     fontWeight: 700,
     minWidth: 310,
-    color: "#333",
+    color: "#363499",
     "@media (max-width: 540px)": {
       fontSize: "1.4rem",
-      paddingBottom: 20,
+      paddingBottom: 10,
     },
   },
   titleBlock: {
@@ -50,7 +50,7 @@ const styles = makeStyles({
     textAlign: "center",
     color: "#fefefe",
     borderRadius: 5,
-    backgroundColor: "#800180",
+    backgroundColor: "#37349A",
     marginRight: 20,
   },
   stickyHead: {

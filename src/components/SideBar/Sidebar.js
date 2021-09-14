@@ -1,24 +1,23 @@
 import { TrendingUp, ExitToApp } from "@material-ui/icons";
-import { Typography, MenuItem } from "@material-ui/core";
+import { MenuItem } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { removeAuthToken } from "../../utils/authToken";
+import r from "constants/routes";
 import styles from "./styles";
 
-function Sidebar({ history }) {
+function Sidebar() {
   const classes = styles();
+  const history = useHistory();
 
-  const logOut = () => {
-    axios.get("https://investon.herokuapp.com/auth/logout").then((response) => {
-      removeAuthToken();
-
-      console.log(response.data);
-    });
+  const handleLogout = () => {
+    removeAuthToken();
+    history.push(r.LOGIN.path);
   };
 
   return (
-    <div>
-      <Typography className={classes.logo}>Inversion</Typography>
+    <div className={classes.sideBar}>
+      <img alt="" src="logo/investon-dark.svg" className={classes.logo} />
       <hr className={classes.line} />
       <div className={classes.sidebarItem}>
         <Link to="/dashboard" className={classes.link}>
@@ -27,12 +26,12 @@ function Sidebar({ history }) {
             <span className={classes.menuItem}> Dashboard</span>
           </MenuItem>
         </Link>
-        <Link className={classes.link}>
-          <MenuItem onClick={logOut} className={classes.item}>
+        <button className={classes.btn}>
+          <MenuItem onClick={handleLogout} className={classes.item}>
             <ExitToApp />
             <span className={classes.menuItem}> Log out</span>
           </MenuItem>
-        </Link>
+        </button>
       </div>
     </div>
   );

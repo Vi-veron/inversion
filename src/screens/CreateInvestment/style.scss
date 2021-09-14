@@ -1,0 +1,231 @@
+.createInvestment {
+  flex-grow: 1;
+  background-color: #eaeaea;
+  height: 100vh;
+}
+.createInvestmentMain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.createInvestmentWrapper {
+  width: 60vw;
+}
+.createInvestmentContainer {
+  // overflow-x: scroll;
+  width: 100%;
+  box-shadow: 0 2px 4px -2px rgba(0, 0, 0, 0.24),
+    0 4px 24px -2px rgba(0, 0, 0, 0.2);
+  display: flex;
+}
+.image {
+  display: flex;
+  padding-left: 40px;
+  width: 40%;
+  height: 640px;
+}
+.imgHeader {
+  font-size: 30px;
+  font-weight: 500;
+  padding-left: 14px;
+  color: #555;
+}
+.form {
+  padding-top: 60px;
+  padding-left: 40px;
+  width: 60%;
+}
+.imgHeader {
+  font-size: 2rem;
+}
+
+.makeInvestmentWrapper {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+}
+.arrowForward {
+  padding: 4rem 2rem 0 2rem;
+}
+.makeInvestment {
+  background-color: #37349a;
+  font-family: "Montserrat";
+  text-transform: none;
+  font-weight: 600;
+  font-size: 1.133rem;
+  padding: 0.85rem 3rem;
+  margin-top: 3.7rem;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  &:hover {
+    background-color: rgb(41, 56, 185);
+  }
+  // &:focus {
+  //   background-color: rgb(16, 85, 16);
+  // }
+}
+
+.carousel {
+  padding-top: 20px;
+  padding-right: 20px;
+}
+
+.carousel .card {
+  flex: 1;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 2rem;
+  margin-top: 1.83rem;
+  // height: 200px !important;
+}
+.rec.rec-arrow:focus {
+  background-color: #37349a;
+}
+.rec.rec-arrow:disabled {
+  visibility: hidden;
+}
+.rec.rec-arrow:hover {
+  background-color: #37349a;
+}
+.rec .rec-dot_active {
+  background-color: #37349a;
+}
+.plans {
+  display: none;
+  opacity: 0;
+
+  &:not(:disabled) ~ label {
+    cursor: pointer;
+  }
+  &:disabled ~ planLabel {
+    color: hsla(150, 5%, 75%, 1);
+    border-color: hsla(150, 5%, 75%, 1);
+    box-shadow: none;
+    cursor: not-allowed;
+  }
+}
+.planLabel {
+  height: 100%;
+  display: block;
+  background: white;
+  border-radius: 20px;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  padding-top: 4rem;
+  padding-bottom: 2.5rem;
+  //margin: 1rem;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.12);
+  transition: 0.3s;
+  position: relative;
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.12);
+  }
+}
+.plans:checked + .planLabel {
+  background: #363499;
+  color: hsla(215, 0%, 100%, 1);
+  fill: hsla(215, 0%, 100%, 1);
+  box-shadow: 0px 0px 20px hsla(226, 85%, 64%, 0.75);
+  &::after {
+    color: hsla(215, 5%, 25%, 1);
+    border: 2px solid #363499;
+    content: "\2713";
+    font-size: 24px;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0px 2px 5px -2px hsla(0, 0%, 0%, 0.25);
+  }
+}
+.card-info {
+  padding-top: 20px;
+}
+.card-header {
+  padding-top: 10px;
+  min-width: 128px;
+}
+
+/* MEDIA QUERIES*/
+@media only screen and (max-width: 540px) {
+  .createInvestmentWrapper {
+    width: 90vw;
+  }
+  .createInvestmentContainer {
+    margin: 40px 20px;
+  }
+  .form {
+    padding-left: 0px;
+    padding-right: 20px;
+    padding-top: 10px;
+  }
+  .imgHeader {
+    width: 90vw;
+    padding-top: 10px;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+  .carousel {
+    width: 90vw;
+    padding: 0 10px;
+    flex-direction: column;
+  }
+  .planLabel {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+  }
+  .makeInvestmentWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .currencyInput {
+    margin-left: 8rem;
+  }
+  .arrowForward {
+    display: none;
+  }
+  .btnWrapper {
+    min-width: 200px;
+    padding-left: 20rem;
+  }
+  .makeInvestment {
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    margin: 2rem 0;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .image {
+    display: none;
+  }
+  .carousel {
+    width: 90vw;
+    padding: 0 10px;
+    flex-direction: column;
+  }
+  .makeInvestmentWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .arrowForward {
+    display: none;
+  }
+  .btnWrapper {
+    min-width: 200px;
+    padding-left: 20rem;
+  }
+  .makeInvestment {
+    margin: 2rem 0;
+  }
+}

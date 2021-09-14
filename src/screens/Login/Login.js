@@ -1,68 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import {
   Hidden,
   Grid,
-  Typography,
   TextField,
   Button,
   Container,
   IconButton,
-  OutlinedInput,
   InputAdornment,
 } from "@material-ui/core/";
 import Hero from "components/Hero";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
 import { useFormik } from "formik";
-import * as Yup from "yup";
 import axios from "axios";
 import { storeAuthToken } from "utils/authToken";
 import styles from "./styles";
+import { toast } from "react-toastify";
+import LoginSchema from "./login.schema";
+import useLoginMutation from "hooks/queries/useLoginMutation";
 
-const Login = (props) => {
+const Login = () => {
   const classes = styles();
+  const history = useHistory();
+  const [doLogin, loginState] = useLoginMutation();
 
-  const [message, setMessage] = useState("");
-
-  const validationSchema = Yup.object().shape({
-    email: Yup.string("Enter your email")
-      .required("Email is required")
-      .email("Email is invalid"),
-    password: Yup.string("Enter your password")
-      .required("Password is required")
-      .min(6, "Password must be at least 6 characters")
-      .max(40, "Password must not exceed 40 characters"),
-  });
+  useEffect(() => {
+    if (loginState.isError) {
+      toast.error(loginState.error.response.data.message);
+    } else if (loginState.isSuccess) {
+      storeAuthToken(loginState.data.data.token);
+      history.push("/dashboard");
+    }
+  }, [
+    loginState.isError,
+    loginState.data,
+    loginState.isSuccess,
+    loginState.error,
+    history,
+  ]);
 
   const formik = useFormik({
     initialValues: {
       email: "example@example.com",
       password: "example",
     },
-    validationSchema: validationSchema,
-    onSubmit: (data) => {
-      setMessage("");
-
-      axios
-        .post("https://investon.herokuapp.com/auth/login", {
-          ...data,
-        })
-        .then(
-          (response) => {
-            storeAuthToken(response.data.data.token);
-            props.history.push("/dashboard");
-          },
-          (error) => {
-            const resMessage =
-              (error.response &&
-                error.response.data &&
-                error.response.data.message) ||
-              error.message ||
-              error.toString();
-
-            setMessage(resMessage);
-          }
-        );
+    validationSchema: LoginSchema,
+    onSubmit: async (payload, values) => {
+      doLogin(payload);
     },
   });
 
@@ -74,13 +58,16 @@ const Login = (props) => {
       });
   };
 
-  const [values, setValues] = React.useState({
+  const [passwordVisibility, setPasswordVisibility] = React.useState({
     password: "",
     showPassword: false,
   });
 
   const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
+    setPasswordVisibility({
+      ...passwordVisibility,
+      showPassword: !passwordVisibility.showPassword,
+    });
   };
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -101,20 +88,18 @@ const Login = (props) => {
                 onSubmit={formik.handleSubmit}
                 className={classes.container}
               >
-                <Typography className={classes.header}>
-                  Log Into Your Account
-                </Typography>
-                <Typography className={classes.subheader}>
+                <p className={classes.header}>Log Into Your Account</p>
+                <p className={classes.subheader}>
                   Don't have an account?{" "}
                   <Link className={classes.link} to="/register">
                     {" "}
                     Sign Up
                   </Link>
-                </Typography>
+                </p>
                 <Button className={classes.googleBtn} onClick={googleLogin}>
                   <span>
                     <img
-                      alt="google logo"
+                      alt=""
                       src="https://img.icons8.com/fluent/20/000000/google-logo.png"
                       className={classes.googleLogo}
                     />
@@ -129,13 +114,21 @@ const Login = (props) => {
                 </h2>
 
                 <Grid className={classes.gridStyle} item xs={12}>
-                  <label className={classes.labelStyle}>Email Address</label>
+                  <label htmlFor="email" className={classes.labelStyle}>
+                    Email Address
+                  </label>
                   <TextField
                     variant="outlined"
                     required
                     fullWidth
+                    autoFocus
                     id="email"
                     name="email"
+                    InputProps={{
+                      classes: {
+                        input: classes.inputStyle,
+                      },
+                    }}
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     error={formik.touched.email && Boolean(formik.errors.email)}
@@ -147,37 +140,48 @@ const Login = (props) => {
                   <span
                     style={{ display: "flex", justifyContent: "space-between" }}
                   >
-                    <label className={classes.labelStyle}>Password</label>
+                    <label htmlFor="password" className={classes.labelStyle}>
+                      Password
+                    </label>
                     <Link to="password/reset" className={classes.link}>
                       forgot password?
                     </Link>
                   </span>
 
-                  <OutlinedInput
-                    id="outlined-adornment-password"
-                    type={values.showPassword ? "text" : "password"}
-                    className={classes.passwordStyle}
-                    endAdornment={
-                      <InputAdornment position="end">
-                        <IconButton
-                          aria-label="toggle password visibility"
-                          onClick={handleClickShowPassword}
-                          onMouseDown={handleMouseDownPassword}
-                          edge="end"
-                        >
-                          {values.showPassword ? (
-                            <Visibility />
-                          ) : (
-                            <VisibilityOff />
-                          )}
-                        </IconButton>
-                      </InputAdornment>
-                    }
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    id="password"
+                    name="password"
+                    autoFocus
+                    type={passwordVisibility.showPassword ? "text" : "password"}
+                    InputProps={{
+                      classes: {
+                        input: classes.inputStyle,
+                      },
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {passwordVisibility.showPassword ? (
+                              <Visibility />
+                            ) : (
+                              <VisibilityOff />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
                     value={formik.values.password}
                     onChange={formik.handleChange("password")}
                     error={
                       formik.touched.password && Boolean(formik.errors.password)
                     }
+                    required
                     helperText={
                       formik.touched.password && formik.errors.password
                     }
@@ -193,13 +197,6 @@ const Login = (props) => {
                 >
                   Log In
                 </Button>
-                {message && (
-                  <div className="form-group">
-                    <div className="alert alert-danger" role="alert">
-                      {message}
-                    </div>
-                  </div>
-                )}
               </form>
             </div>
           </Container>

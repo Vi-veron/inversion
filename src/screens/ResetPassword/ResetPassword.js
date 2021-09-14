@@ -1,8 +1,11 @@
 import React from "react";
-import { Container, Grid, Hidden, Button, Typography } from "@material-ui/core";
+import { Container, Grid, Hidden, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import Hero from "../../components/Hero";
+import Hero from "components/Hero";
 import styles from "./styles";
+import { ReactComponent as ResetPasswordIllustration } from "assets/reset-password.svg";
+import EmptyState from "components/EmptyState";
+
 import PasswordResetLinkForm from "./components/PasswordResetLinkForm";
 import PasswordResetForm from "./components/PasswordResetForm";
 import useParamSearch from "hooks/useParamSearch.js";
@@ -17,14 +20,15 @@ function ResetPassword({ history, match }) {
 
   if (requestedReset)
     return (
-      <div>
-        <Typography>We just sent a reset link to your inbox.</Typography>
-        <Button>
-          <Link to="/login">
-            <Button>Back to login</Button>
-          </Link>
-        </Button>
-      </div>
+      <EmptyState
+        artwork={<ResetPasswordIllustration />}
+        title="Password reset link sent"
+        message="We just sent a reset link to your inbox."
+      >
+        <Link style={{ textDecoration: "none" }} to="/login">
+          <Button className={classes.loginBtn}>Back to login</Button>
+        </Link>
+      </EmptyState>
     );
 
   return (
@@ -40,11 +44,13 @@ function ResetPassword({ history, match }) {
             {token ? (
               <PasswordResetForm token={token} />
             ) : (
-              <PasswordResetLinkForm
-                onSuccess={() =>
-                  history.push("/password/reset?requestedReset=1")
-                }
-              />
+              <>
+                <PasswordResetLinkForm
+                  onSuccess={() =>
+                    history.push("/password/reset?requestedReset=1")
+                  }
+                />
+              </>
             )}
           </Container>
         </Grid>

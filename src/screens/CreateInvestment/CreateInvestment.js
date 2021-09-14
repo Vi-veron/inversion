@@ -1,55 +1,90 @@
+import React from "react";
 import AppBar from "components/AppBar";
-import { Paper, Button, Grid, Hidden } from "@material-ui/core";
-import BorderSelect from "components/Select";
-import CurrencyInput from "components/Form/CurrencyInput";
-import Modal from "components/Modal/Modal";
-import useModal from "components/Modal/useModal";
+import { Paper, Grid, Hidden, Button } from "@material-ui/core";
 import Sidebar from "components/SideBar";
-import styles from "./styles";
+import "./style.scss";
+import EmptyState from "components/EmptyState";
+import { ReactComponent as ErrorIllustration } from "assets/error-occured.svg";
+import LoadingState from "components/LoadingState";
+import Carousel from "react-elastic-carousel";
+import usePlansQuery from "hooks/queries/usePlansQuery";
+import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import CurrencyInput from "components/Form/CurrencyInput";
+import { useFormik } from "formik";
+import CreatePlanSchema from "./createplan.schema";
+import useCreateInvestmentMutation from "hooks/queries/useCreateInvestmentMutation";
+import useMutationNotifications from "hooks/useMutationNotifications";
 
-// const plans = [
-//   {
-//     id: 1,
-//     name: "Artic Berry",
-//     description:
-//       "Involves building earthen, concrete or tarpaulin ponds, stocking the fingernails or juveniles and feeding the fish till market size.",
-//     returns: "Get 10% every month",
-//     duration: "6months",
-//   },
-//   {
-//     id: 2,
-//     name: "Ressa Project",
-//     description: "",
-//     returns: "Get 5% every month",
-//     duration: "12months",
-//   },
-//   {
-//     id: 3,
-//     name: "Poultry Farming",
-//     description:
-//       "With over 160 Million consumers in the country who buys poultry products on daily basis, the market is always here waiting to be tapped.",
-//     returns: "Get 8% every month",
-//     duration: "6months",
-//   },
-//   {
-//     id: 4,
-//     name: "Milk Factory",
-//     description:
-//       "Nigeria’s annual milk production is estimated at 500,000 tonnes while the annual local demand for milk stands at an average of 1.7m tonnes, with the shortfall imported into the country.",
-//     returns: "Get 12% every month",
-//     duration: "3months",
-//   },
-// ];
+import { planIconsCategoryMap } from "constants/data";
 
-export default function CreateInvestment() {
-  const classes = styles();
-  const { isShowing, toggle } = useModal();
+const PlanIcon = ({ category }) => {
+  const PlanIconComponent = planIconsCategoryMap.hasOwnProperty(category)
+    ? planIconsCategoryMap[category]
+    : null;
+
+  return PlanIconComponent ? <PlanIconComponent /> : null;
+};
+
+export default function CreateInvestment({ investmentId }) {
+  const { data: plans, isLoading, isError } = usePlansQuery();
+
+  const [doCreateInvestment, investmentCreationState] =
+    useCreateInvestmentMutation();
+  useMutationNotifications({
+    ...investmentCreationState,
+    actionType: "create",
+    entity: "investment",
+    useServerMessage: false,
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      id: null,
+      amount: "",
+    },
+    validationSchema: CreatePlanSchema,
+    onSubmit: async (payload) => {
+      console.log(payload);
+      doCreateInvestment(payload);
+    },
+  });
+
+  // useEffect(() => {}, []);
+
+  if (isLoading) return <LoadingState />;
+
+  if (isError)
+    return (
+      <section
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <div>
+          <EmptyState
+            artwork={<ErrorIllustration />}
+            message={`Oops! an error occurred trying to fetch investment plans`}
+          ></EmptyState>
+        </div>
+      </section>
+    );
+
+  const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 850, itemsToShow: 3 },
+    { width: 1150, itemsToShow: 4, itemsToScroll: 2 },
+    { width: 1450, itemsToShow: 5 },
+    { width: 1750, itemsToShow: 6 },
+  ];
 
   return (
-    <div className={classes.root}>
-      <Grid container>
+    <div className="createInvestment">
+      <Grid item xs={12} container>
         <Hidden xsDown>
-          <Grid item xs={12} sm={2} className={classes.sideBar}>
+          <Grid item sm={2}>
             <Sidebar />
           </Grid>
         </Hidden>
@@ -58,37 +93,86 @@ export default function CreateInvestment() {
           <AppBar />
         </Hidden>
 
-        <Grid item xs={12} sm={10}>
-          <section className={classes.card}>
-            <Paper className={classes.container}>
+        <Grid className="createInvestmentMain" item sm={10}>
+          <div className="createInvestmentWrapper">
+            <Paper className="createInvestmentContainer">
               <Hidden xsDown>
-                <img src="img/invest.jpg" className={classes.image} alt="" />
+                <img src="img/investment-image.svg" className="image" alt="" />
               </Hidden>
-              <span className={classes.main}>
-                <BorderSelect />
-                {/* <div>
-                  {plans.map((plan) => (
-                    <Button key={plan.id} style={{ border: "none" }}>
-                      <Card>
-                        <CardContent>
-                          <h3>{plan.name}</h3>
-                          <Typography></Typography>
-                        </CardContent>
-                      </Card>
-                    </Button>
-                  ))}
-                </div> */}
+              <form onSubmit={formik.handleSubmit} className="form">
+                <p className="imgHeader">Select an Investment Plan</p>
+                <Carousel
+                  easing="cubic-bezier(1,.15,.55,1.54)"
+                  tiltEasing="cubic-bezier(0.110, 1, 1.000, 0.210)"
+                  transitionMs={700}
+                  breakPoints={breakPoints}
+                  className="carousel"
+                >
+                  {plans.map((plan, idx) => {
+                    return (
+                      <div key={plan._id} className="card">
+                        <input
+                          className="plans"
+                          type="radio"
+                          id={`${plan._id}-${idx}`}
+                          name="id"
+                          onChange={formik.handleChange}
+                          value={plan._id}
+                        />
+                        <label
+                          className="planLabel"
+                          htmlFor={`${plan._id}-${idx}`}
+                        >
+                          <PlanIcon
+                            category={
+                              ["tourism"].includes(plan.category)
+                                ? plan.name
+                                : plan.category
+                            }
+                          />
 
-                <CurrencyInput />
-                <div className={classes.btnWrapper}>
-                  <Button onClick={toggle} className={classes.nextBtn}>
-                    Next
-                  </Button>
-                  <Modal isShowing={isShowing} hide={toggle} />
+                          <h2 className="card-header">{plan.name}</h2>
+                          <p className="card-info">
+                            Get {plan.expectedReturn} every month
+                          </p>
+                        </label>
+                        {formik.touched.id && Boolean(formik.errors.id) ? (
+                          <div style={{ color: "red", paddingTop: 10 }}>
+                            Please select a plan!
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                    );
+                  })}
+                </Carousel>
+
+                <div className="makeInvestmentWrapper">
+                  <span className="currencyInput">
+                    <CurrencyInput
+                      label={"Amount"}
+                      id={"amount"}
+                      value={formik.values.amount}
+                      onChange={formik.handleChange}
+                      error={
+                        formik.touched.amount && Boolean(formik.errors.amount)
+                      }
+                      helperText={formik.touched.amount && formik.errors.amount}
+                    />
+                  </span>
+                  <span className="arrowForward">
+                    <ArrowForwardIcon />
+                  </span>
+                  <span className="btnWrapper">
+                    <Button type="submit" className="makeInvestment">
+                      Make Investment
+                    </Button>
+                  </span>
                 </div>
-              </span>
+              </form>
             </Paper>
-          </section>
+          </div>
         </Grid>
       </Grid>
     </div>

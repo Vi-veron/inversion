@@ -1,29 +1,45 @@
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "screens/Home";
-import Dashboard from "screens/Dashboard";
-import Register from "screens/Register";
-import Login from "screens/Login";
-import CreateInvestment from "screens/CreateInvestment";
-import Profile from "screens/Profile";
-import Contact from "screens/Contact";
-import ResetPassword from "screens/ResetPassword";
+import { ThemeProvider, DEFAULT_THEME } from "@zendeskgarden/react-theming";
+import AppRouter from "./components/AppRouter/AppRouter";
+import { ToastProvider } from "@zendeskgarden/react-notifications";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import themeCreator from "config/theme";
 
 function App() {
+  const topProps = {
+    style: { top: DEFAULT_THEME.space.base * 3 },
+  };
+  const bottomProps = {
+    style: { bottom: DEFAULT_THEME.space.base * 3 },
+  };
+  const placementProps = {
+    "top-start": topProps,
+    top: topProps,
+    "top-end": topProps,
+    "bottom-start": bottomProps,
+    bottom: bottomProps,
+    "bottom-end": bottomProps,
+  };
   return (
     <div className="App">
-      <Router>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
-          <Route path="/create-investment" component={CreateInvestment} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/password/reset" component={ResetPassword} />
-        </Switch>
-      </Router>
+      <ThemeProvider focusVisibleRef={null} theme={themeCreator(DEFAULT_THEME)}>
+        <ToastProvider placementProps={placementProps} zIndex={1}>
+          <AppRouter />
+        </ToastProvider>
+      </ThemeProvider>
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClickgit
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </div>
   );
 }

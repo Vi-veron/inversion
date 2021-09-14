@@ -223,7 +223,7 @@ export default function StickyHeadTable() {
           Manage Investments
         </Typography>{" "}
         <Link to="/create-investment" className={classes.link}>
-          <Button className={classes.btn}>Create Investments</Button>{" "}
+          <Button className={classes.btn}>Create Investment</Button>{" "}
         </Link>
       </div>
 
@@ -280,8 +280,8 @@ export default function StickyHeadTable() {
         count={rows.length}
         rowsPerPage={rowsPerPage}
         page={page}
-        onChangePage={handleChangePage}
-        onChangeRowsPerPage={handleChangeRowsPerPage}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </div>
   );

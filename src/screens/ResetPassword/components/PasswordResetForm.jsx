@@ -1,74 +1,60 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import {
-  OutlinedInput,
+  TextField,
   Button,
   Typography,
   InputAdornment,
   IconButton,
 } from "@material-ui/core";
 import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { toast } from "react-toastify";
 import { useFormik } from "formik";
-import * as Yup from "yup";
-import axios from "axios";
+import PasswordResetFormSchema from "./passwordreset.schema";
+import usePasswordResetMutation from "hooks/queries/usePasswordResetMutation";
 import styles from "../styles";
 
-const PasswordResetForm = () => {
+const PasswordResetForm = ({ token }) => {
   const classes = styles();
-  const setMessage = useState("");
 
-  const [values, setValues] = useState({
+  const [passwordVisibility, setPasswordVisibility] = useState({
     password: "",
     showPassword: false,
   });
 
   const handleClickShowPassword = () => {
-    setValues({ ...values, showPassword: !values.showPassword });
+    setPasswordVisibility({
+      ...passwordVisibility,
+      showPassword: !passwordVisibility.showPassword,
+    });
   };
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
   };
 
-  const validationSchema = Yup.object().shape({
-    password: Yup.string("Enter your password")
-      .required("Password is required")
-      .min(6, "Password must be at least 6 characters")
-      .max(40, "Password must not exceed 40 characters"),
-    confirmPassword: Yup.string("Reenter your password")
-      .oneOf([Yup.ref("password"), null], "Passwords must match")
-      .required("Confirm Password is required"),
-  });
+  const [doPasswordReset, passwordResetState] = usePasswordResetMutation();
+
+  React.useEffect(() => {
+    if (passwordResetState.isError) {
+      toast.error(passwordResetState.error.response.data.message);
+    } else if (passwordResetState.isSuccess) {
+      toast.success("Successfully reset password. Please login.");
+    }
+  }, [
+    passwordResetState.isError,
+    passwordResetState.isSuccess,
+    passwordResetState.error,
+  ]);
 
   const formik = useFormik({
     initialValues: {
       password: "",
-      confirmPassword: "",
+      // confirmPassword: "",
     },
-    validationSchema: validationSchema,
-    onSubmit: (data) => {
-      setMessage("");
-
-      axios
-        .post(
-          "https://investon.herokuapp.com/auth/completeresetpassword/60f311078e13fd059cf09214/99097240",
-          {
-            ...data,
-          }
-        )
-        .then(
-          (response) => {
-            setMessage(response.data.message);
-            console.log("response>>>>", response);
-          },
-          (error) => {
-            const resMessage = error.data;
-            console.log(error.response?.data);
-            alert(JSON.stringify(error.response?.data.message, null, 2));
-
-            setMessage(resMessage);
-          }
-        );
+    validationSchema: PasswordResetFormSchema,
+    onSubmit: (payload) => {
+      doPasswordReset(payload);
     },
   });
 
@@ -78,43 +64,69 @@ const PasswordResetForm = () => {
       <Typography className={classes.text}>
         Please enter your new password.
       </Typography>
-      <label className={classes.label}>Password</label>
-      <OutlinedInput
-        id="outlined-adornment-password"
-        type={values.showPassword ? "text" : "password"}
-        className={classes.passwordStyle}
-        endAdornment={
-          <InputAdornment position="end">
-            <IconButton
-              aria-label="toggle password visibility"
-              onClick={handleClickShowPassword}
-              onMouseDown={handleMouseDownPassword}
-              edge="end"
-            >
-              {values.showPassword ? <Visibility /> : <VisibilityOff />}
-            </IconButton>
-          </InputAdornment>
-        }
+      <label htmlFor="password" className={classes.label}>
+        Password
+      </label>
+      <TextField
+        variant="outlined"
+        fullWidth
+        id="password"
+        name="password"
+        autoFocus
+        type={passwordVisibility.showPassword ? "text" : "password"}
+        InputProps={{
+          classes: {
+            input: classes.inputStyle,
+          },
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton
+                aria-label="toggle password visibility"
+                onClick={handleClickShowPassword}
+                onMouseDown={handleMouseDownPassword}
+                edge="end"
+              >
+                {passwordVisibility.showPassword ? (
+                  <Visibility />
+                ) : (
+                  <VisibilityOff />
+                )}
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
         value={formik.values.password}
         onChange={formik.handleChange("password")}
         error={formik.touched.password && Boolean(formik.errors.password)}
+        required
         helperText={formik.touched.password && formik.errors.password}
       />
-      <label className={classes.label}>Confirm Password</label>
-      <OutlinedInput
-        id="outlined-adornment-password"
-        type={values.showPassword ? "text" : "password"}
-        className={classes.passwordStyle}
+      {/* <label htmlFor="confirmPassword" className={classes.label}>
+        Confirm Password
+      </label>
+      <TextField
+        variant="outlined"
+        fullWidth
+        id="confirmPassword"
+        name="confirmPassword"
+        autoFocus
+        type="password"
+        InputProps={{
+          classes: {
+            input: classes.inputStyle,
+          },
+        }}
         value={formik.values.confirmPassword}
         onChange={formik.handleChange("confirmPassword")}
         error={
           formik.touched.confirmPassword &&
           Boolean(formik.errors.confirmPassword)
         }
+        required
         helperText={
           formik.touched.confirmPassword && formik.errors.confirmPassword
         }
-      />
+      /> */}
       <Button
         className={classes.btn}
         type="submit"

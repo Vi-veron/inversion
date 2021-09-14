@@ -1,28 +1,80 @@
 import React from "react";
-import CurrencyTextField from "@unicef/material-ui-currency-textfield";
-import { FormControl } from "@material-ui/core";
+import PropTypes from "prop-types";
+import {
+  FormControl,
+  TextField,
+  IconButton,
+  InputAdornment,
+} from "@material-ui/core";
+import NumberFormat from "react-number-format";
 import styles from "./styles";
 
-export default function CurrencyInput() {
-  const [value, setValue] = React.useState();
-  const isValid = value < 100000;
+function NumberFormatCustom(props) {
+  const { inputRef, onChange, ...other } = props;
+
+  return (
+    <NumberFormat
+      {...other}
+      getInputRef={inputRef}
+      onValueChange={(values) => {
+        onChange({
+          target: {
+            name: props.name,
+            value: values.value,
+          },
+        });
+      }}
+      thousandSeparator
+      isNumericString
+    />
+  );
+}
+
+NumberFormatCustom.propTypes = {
+  inputRef: PropTypes.func.isRequired,
+
+  onChange: PropTypes.func.isRequired,
+};
+
+export default function CurrencyInput({ label, id, ...rest }) {
+  const [amount, setAmount] = React.useState("");
   const classes = styles();
+
+  const handleChange = (event) => {
+    setAmount({
+      ...amount,
+      [event.target.name]: event.target.value,
+    });
+  };
+
   return (
     <FormControl>
-      <label className={classes.label}>Amount</label>
-      <CurrencyTextField
-        className={classes.root}
+      <label className={classes.label} htmlFor={id}>
+        {label}
+      </label>
+      <TextField
         variant="outlined"
-        value={value}
-        currencySymbol="&#x20a6;"
-        onChange={(e, value) => setValue(value)}
-        error={isValid}
-        helperText={isValid && "minimum amount is 100,000 naira"}
-        decimalCharacter="."
-        decimalPlaces={2}
-        placeholder="100,000.00"
-        digitGroupSeparator=","
+        fullWidth
+        autoFocus
+        className={classes.root}
+        id={id}
+        name={"amount"}
+        value={amount.numberformat}
+        onChange={handleChange}
+        InputProps={{
+          classes: {
+            input: classes.inputStyle,
+          },
+          inputComponent: NumberFormatCustom,
+          startAdornment: (
+            <InputAdornment position="start">
+              <IconButton className={classes.icon}>&#x20a6;</IconButton>
+            </InputAdornment>
+          ),
+        }}
+        {...rest}
       />
     </FormControl>
   );
 }
+CurrencyInput.defaultProps = {};

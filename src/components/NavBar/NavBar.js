@@ -1,32 +1,47 @@
 import React from "react";
-import { Link } from "react-router-dom"; // can be react-router-dom, reach router
-import { NavMenu, NavItem } from "@mui-treasury/components/menu/navigation";
-import { useFloatNavigationMenuStyles } from "@mui-treasury/styles/navigationMenu/float";
-import { Typography } from "@material-ui/core";
-import styles from "./styles";
+import { Link } from "react-router-dom";
+import "./style.scss";
 
 export default function NavBar() {
-  const classes = styles();
   return (
-    <NavMenu
-      gutter={1}
-      useStyles={useFloatNavigationMenuStyles}
-      className={classes.navBar}
-    >
-      <Typography className={classes.logo}>Inversion</Typography>
+    <div className="nav">
+      <input type="checkbox" id="nav-check" />
+      <div className="nav-header">
+        <a href="/">
+          <img alt="logo" src="icon/investon-light-icon.svg" />
+        </a>
+      </div>
+      <div className="nav-btn">
+        <label htmlFor="nav-check">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
 
-      <span className={classes.wrapper}>
-        <NavItem className={classes.activeStyle} active as={Link} to={"/"}>
-          Home
-        </NavItem>
-        <NavItem>About Us</NavItem>
-        <NavItem as={Link} to={"/login"}>
-          Login
-        </NavItem>
-        <NavItem as={Link} to={"/register"}>
-          Signup
-        </NavItem>
-      </span>
-    </NavMenu>
+      <div className="nav-links">
+        <ul>
+          <li>
+            <Link to="/" className="active">
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link to="">About</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
+
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+
+          <li>
+            <Link to="/register">Signup</Link>
+          </li>
+        </ul>
+      </div>
+    </div>
   );
 }

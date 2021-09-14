@@ -3,7 +3,7 @@ import { grey, purple } from "@material-ui/core/colors";
 
 const styles = makeStyles((theme) => ({
   select: {
-    minWidth: "280px",
+    minWidth: " 90%",
     width: "20vw",
     background: "white",
     color: grey[600],

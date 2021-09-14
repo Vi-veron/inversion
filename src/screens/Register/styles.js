@@ -34,11 +34,12 @@ const styles = makeStyles((theme) => ({
   },
   linkStyle: {
     textDecoration: "none",
+    color: "#37349A",
     "&:hover": {
-      color: "#9c27b0",
+      color: "#6A68A6",
     },
     "&:focus": {
-      color: "#ab47bc",
+      color: "#37349A",
     },
   },
   googleBtn: {
@@ -54,6 +55,7 @@ const styles = makeStyles((theme) => ({
     position: "relative",
     textTransform: "none",
     minWidth: 300,
+    fontFamily: "Montserrat",
   },
   googleLogo: {
     position: "absolute",
@@ -100,21 +102,19 @@ const styles = makeStyles((theme) => ({
     paddingBottom: 10,
     minWidth: 300,
   },
+  inputStyle: {
+    fontFamily: "Montserrat",
+  },
   labelStyle: {
     display: "flex",
     padding: "10px 0",
     color: "#4D555A",
   },
-  passwordStyle: {
-    minWidth: 300,
-    width: "100%",
-    border: "none",
-  },
   checkbox: {
     minWidth: 300,
   },
   submit: {
-    backgroundColor: "#6C63FF",
+    backgroundColor: "#37349A",
     margin: "20px 0",
     padding: 8,
     textTransform: "none",

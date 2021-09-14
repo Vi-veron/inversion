@@ -25,7 +25,8 @@ const styles = makeStyles((theme) => ({
   },
   label: {
     display: "flex",
-    paddingTop: 20,
+    paddingTop: 30,
+    paddingBottom: 10,
     color: "#4D555A",
     minWidth: 300,
     fontWeight: 600,
@@ -36,7 +37,7 @@ const styles = makeStyles((theme) => ({
   btn: {
     margin: theme.spacing(3, 0, 2),
     color: "#fff",
-    backgroundColor: "#6C63FF",
+    backgroundColor: "#363499",
     textTransform: "none",
     padding: "10px 0",
     minWidth: 300,
@@ -45,11 +46,26 @@ const styles = makeStyles((theme) => ({
     textDecoration: "none",
     display: "flex",
     minWidth: 300,
+    color: "#5754c5",
+    "&:hover": {
+      color: "#363499",
+    },
   },
   passwordStyle: {
     minWidth: 300,
     width: "100%",
     border: "none",
+  },
+  loginBtn: {
+    backgroundColor: "#363499",
+    color: "#fff",
+    textTransform: "none",
+    marginTop: 20,
+    fontSize: "1rem",
+    fontWeight: 500,
+    "&:hover": {
+      backgroundColor: "#5754c5",
+    },
   },
 }));
 

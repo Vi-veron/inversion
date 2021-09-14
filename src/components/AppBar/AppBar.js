@@ -3,8 +3,6 @@ import clsx from "clsx";
 import {
   IconButton,
   Drawer,
-  MenuItem,
-  Typography,
   List,
   ListItemText,
   ListItem,
@@ -14,38 +12,20 @@ import {
 } from "@material-ui/core";
 import {
   Menu,
-  TrendingUp,
-  Home,
   AccountCircle,
   Notifications,
   Settings,
-  ExitToApp,
+  Help,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { removeAuthToken } from "../../utils/authToken";
-import axios from "axios";
 import styles from "./styles";
+import SideBar from "../SideBar";
 
-function AppBar() {
+export function UserMenu() {
   const classes = styles();
-
-  const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const [state, setState] = React.useState({
-    bottom: false,
+    right: false,
   });
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
-  const logOut = () => {
-    axios.get("https://investon.herokuapp.com/auth/logout").then((response) => {
-      removeAuthToken();
-
-      console.log(response.data);
-    });
-  };
 
   const toggleDrawer = (anchor, open) => (event) => {
     if (
@@ -61,7 +41,7 @@ function AppBar() {
   const list = (anchor) => (
     <div
       className={clsx(classes.list, {
-        [classes.fullList]: anchor === "bottom",
+        [classes.fullList]: anchor === "right",
       })}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
@@ -93,18 +73,46 @@ function AppBar() {
           </ListItemIcon>
           <ListItemText>Settings</ListItemText>
         </ListItem>
-        <ListItem onClick={logOut}>
+        <ListItem>
           <ListItemIcon>
-            <ExitToApp />
+            <Help />
           </ListItemIcon>
-          <ListItemText>Log out</ListItemText>
+          <ListItemText>Help</ListItemText>
         </ListItem>
       </List>
     </div>
   );
 
   return (
-    <div className={classes.appBar}>
+    <div>
+      {["right"].map((anchor) => (
+        <React.Fragment key={anchor}>
+          <IconButton onClick={toggleDrawer(anchor, true)}>
+            <AccountCircle className={classes.userIcon} />
+          </IconButton>
+          <Drawer
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+          >
+            {list(anchor)}
+          </Drawer>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+}
+
+export function MobileSideBar() {
+  const classes = styles();
+
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+  return (
+    <div>
       <IconButton
         aria-label="open drawer"
         edge="start"
@@ -124,39 +132,19 @@ function AppBar() {
           keepMounted: true, // Better open performance on mobile.
         }}
       >
-        <Link
-          to="/dashboard"
-          onClick={handleDrawerToggle}
-          className={classes.link}
-        >
-          <MenuItem className={classes.active}>
-            <TrendingUp />
-            <span className={classes.menuItem}> Dashboard</span>
-          </MenuItem>
-        </Link>
-        <Link to="/" className={classes.link}>
-          <MenuItem>
-            <Home />
-            <span className={classes.menuItem}> Home</span>
-          </MenuItem>
-        </Link>
+        <SideBar />
       </Drawer>
+    </div>
+  );
+}
 
-      <Typography className={classes.logo}>inversion</Typography>
-      {["bottom"].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <IconButton onClick={toggleDrawer(anchor, true)}>
-            <AccountCircle className={classes.userIcon} />
-          </IconButton>
-          <Drawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+function AppBar() {
+  const classes = styles();
+
+  return (
+    <div className={classes.appBar}>
+      <MobileSideBar />
+      <UserMenu />
     </div>
   );
 }
