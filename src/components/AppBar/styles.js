@@ -42,11 +42,11 @@ const styles = makeStyles((theme) => ({
     width: 40,
   },
   list: {
-    width: 250,
+    width: 300,
     paddingTop: 40,
   },
   fullList: {
-    width: 250,
+    width: 300,
   },
 }));
 

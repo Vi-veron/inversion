@@ -1,24 +1,10 @@
-import React, { useCallback } from "react";
-
-import { useToast } from "@zendeskgarden/react-notifications";
-import Notifications from "components/Notifications/Notifications";
+import { useCallback } from "react";
+import toast from "react-hot-toast";
 
 const useShowToast = () => {
-  const { addToast } = useToast();
-
-  const showToast = useCallback(
-    ({ type, title, message }) => {
-      addToast(({ close }) => (
-        <Notifications
-          title={title}
-          type={type}
-          message={message}
-          onClose={close}
-        />
-      ));
-    },
-    [addToast]
-  );
+  const showToast = useCallback(({ type, title, message }) => {
+    toast[type](message);
+  }, []);
 
   return showToast;
 };

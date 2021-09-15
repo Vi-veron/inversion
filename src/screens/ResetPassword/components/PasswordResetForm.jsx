@@ -75,9 +75,6 @@ const PasswordResetForm = ({ token }) => {
         autoFocus
         type={passwordVisibility.showPassword ? "text" : "password"}
         InputProps={{
-          classes: {
-            input: classes.inputStyle,
-          },
           endAdornment: (
             <InputAdornment position="end">
               <IconButton
@@ -111,11 +108,6 @@ const PasswordResetForm = ({ token }) => {
         name="confirmPassword"
         autoFocus
         type="password"
-        InputProps={{
-          classes: {
-            input: classes.inputStyle,
-          },
-        }}
         value={formik.values.confirmPassword}
         onChange={formik.handleChange("confirmPassword")}
         error={

@@ -62,9 +62,6 @@ export default function CurrencyInput({ label, id, ...rest }) {
         value={amount.numberformat}
         onChange={handleChange}
         InputProps={{
-          classes: {
-            input: classes.inputStyle,
-          },
           inputComponent: NumberFormatCustom,
           startAdornment: (
             <InputAdornment position="start">

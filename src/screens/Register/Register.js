@@ -152,11 +152,6 @@ export default function Register() {
                         fullWidth
                         id="name"
                         autoFocus
-                        InputProps={{
-                          classes: {
-                            input: classes.inputStyle,
-                          },
-                        }}
                         value={formik.values.name}
                         onChange={formik.handleChange}
                         error={
@@ -179,11 +174,6 @@ export default function Register() {
                         required
                         fullWidth
                         id="username"
-                        InputProps={{
-                          classes: {
-                            input: classes.inputStyle,
-                          },
-                        }}
                         autoFocus
                         value={formik.values.username}
                         onChange={formik.handleChange}
@@ -209,11 +199,6 @@ export default function Register() {
                       fullWidth
                       id="email"
                       name="email"
-                      InputProps={{
-                        classes: {
-                          input: classes.inputStyle,
-                        },
-                      }}
                       value={formik.values.email}
                       onChange={formik.handleChange}
                       error={
@@ -235,11 +220,6 @@ export default function Register() {
                       fullWidth
                       type="tel"
                       id="mobile"
-                      InputProps={{
-                        classes: {
-                          input: classes.inputStyle,
-                        },
-                      }}
                       autoFocus
                       value={formik.values.mobile}
                       onChange={formik.handleChange}
@@ -264,9 +244,6 @@ export default function Register() {
                         passwordVisibility.showPassword ? "text" : "password"
                       }
                       InputProps={{
-                        classes: {
-                          input: classes.inputStyle,
-                        },
                         endAdornment: (
                           <InputAdornment position="end">
                             <IconButton
@@ -301,9 +278,6 @@ export default function Register() {
                       control={
                         <Checkbox value="allowExtraEmails" color="primary" />
                       }
-                      classes={{
-                        label: classes.inputStyle,
-                      }}
                       label="I want to receive investments options and latest updates."
                       value={formik.values.checkbox}
                       onChange={handleChecked}

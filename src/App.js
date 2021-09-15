@@ -1,46 +1,72 @@
 import "./App.css";
-import { ThemeProvider, DEFAULT_THEME } from "@zendeskgarden/react-theming";
 import AppRouter from "./components/AppRouter/AppRouter";
-import { ToastProvider } from "@zendeskgarden/react-notifications";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import themeCreator from "config/theme";
+import { toast, Toaster, ToastBar } from "react-hot-toast";
+// import themeCreator from "config/theme";
+import { ThemeProvider } from "@material-ui/styles";
+import { createTheme, responsiveFontSizes } from "@material-ui/core/styles";
 
 function App() {
-  const topProps = {
-    style: { top: DEFAULT_THEME.space.base * 3 },
-  };
-  const bottomProps = {
-    style: { bottom: DEFAULT_THEME.space.base * 3 },
-  };
-  const placementProps = {
-    "top-start": topProps,
-    top: topProps,
-    "top-end": topProps,
-    "bottom-start": bottomProps,
-    bottom: bottomProps,
-    "bottom-end": bottomProps,
-  };
+  let theme = createTheme({
+    typography: {
+      fontFamily: [
+        "Montserrat",
+        "Open Sans",
+        "Source Sans Pro",
+        "Lora",
+        "Lato",
+        "Georgia",
+        "Roboto",
+        '"Helvetica Neue"',
+        "Arial",
+        "sans-serif",
+      ].join(","),
+    },
+  });
+  theme = responsiveFontSizes(theme);
   return (
-    <div className="App">
-      <ThemeProvider focusVisibleRef={null} theme={themeCreator(DEFAULT_THEME)}>
-        <ToastProvider placementProps={placementProps} zIndex={1}>
-          <AppRouter />
-        </ToastProvider>
-      </ThemeProvider>
-
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClickgit
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
-    </div>
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <AppRouter />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            className: "",
+            duration: 5000,
+            style: {
+              padding: "16px",
+            },
+            success: {
+              style: {
+                color: "green",
+              },
+            },
+            error: {
+              style: {
+                color: "#713200",
+              },
+            },
+          }}
+        >
+          {(t) => (
+            <ToastBar toast={t}>
+              {({ icon, message }) => (
+                <>
+                  {message}
+                  {t.type !== "loading" && (
+                    <button
+                      style={{ border: "none" }}
+                      onClick={() => toast.dismiss(t.id)}
+                    >
+                      {icon}
+                    </button>
+                  )}
+                </>
+              )}
+            </ToastBar>
+          )}
+        </Toaster>
+      </div>
+    </ThemeProvider>
   );
 }
 

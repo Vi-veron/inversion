@@ -124,11 +124,6 @@ const Login = () => {
                     autoFocus
                     id="email"
                     name="email"
-                    InputProps={{
-                      classes: {
-                        input: classes.inputStyle,
-                      },
-                    }}
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     error={formik.touched.email && Boolean(formik.errors.email)}
@@ -156,9 +151,6 @@ const Login = () => {
                     autoFocus
                     type={passwordVisibility.showPassword ? "text" : "password"}
                     InputProps={{
-                      classes: {
-                        input: classes.inputStyle,
-                      },
                       endAdornment: (
                         <InputAdornment position="end">
                           <IconButton

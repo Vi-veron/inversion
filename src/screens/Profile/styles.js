@@ -4,6 +4,7 @@ const styles = makeStyles((theme) => ({
   container: {
     height: "100vh",
     width: "100vw",
+    background: "#eaeaea",
   },
   bar: {
     color: "#555",
@@ -13,7 +14,6 @@ const styles = makeStyles((theme) => ({
     height: "10vh",
   },
   logo: {
-    fontFamily: "Montserrat",
     color: "#1D1A73",
     fontWeight: 600,
     fontSize: 20,
@@ -33,33 +33,45 @@ const styles = makeStyles((theme) => ({
     width: "100%",
   },
   wrapper: {
-    display: "flex",
-    justifyContent: "center",
+    background: "#fff",
+    width: "80vw",
+    borderRadius: 20,
+    padding: 40,
+    boxShadow:
+      "0 2px 4px -2px rgba(0,0,0,0.24), 0 4px 24px -2px rgba(0, 0, 0, 0.2)",
   },
-  image: {
+  imageContainer: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "20vw",
-    minWidth: "86%",
+    height: 400,
     marginLeft: "1.5rem",
-    marginTop: "0.5rem",
-    height: "40vh",
     backgroundColor: "#999",
+
     borderRadius: 2,
     "@media (max-width: 540px)": {
       height: "30vh",
       marginTop: "8rem",
     },
   },
-  imageText: {
+  image: {
+    width: 400,
+    height: 420,
+  },
+  imageContent: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  uploadIcon: {
+    fontSize: 30,
     color: "#fefefe",
+  },
+  uploadText: {
     fontSize: 20,
-    fontWeight: 500,
+    color: "#fefefe",
   },
   userInfo: {
     marginTop: "2rem",
-    width: "68vw",
     marginLeft: "8%",
     "@media (max-width: 540px)": {
       marginTop: "2rem",
@@ -68,18 +80,10 @@ const styles = makeStyles((theme) => ({
   userName: {
     fontSize: "2rem",
     fontWeight: 500,
-    color: "#333",
+    color: "#111",
     paddingBottom: 20,
     "@media (max-width: 540px)": {
       fontSize: "1.7rem",
-    },
-  },
-  contactInfo: {
-    paddingTop: "3vh",
-    fontSize: "1.2rem",
-    color: "#999",
-    "@media (max-width: 540px)": {
-      fontSize: "1rem",
     },
   },
   details: {

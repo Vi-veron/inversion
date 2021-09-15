@@ -34,10 +34,6 @@ const styles = makeStyles((theme) => ({
   },
   icon: {
     fontSize: 16,
-    fontFamily: "Montserrat",
-  },
-  inputStyle: {
-    fontFamily: "Montserrat",
   },
 }));
 

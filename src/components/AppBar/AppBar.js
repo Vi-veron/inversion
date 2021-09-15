@@ -51,7 +51,7 @@ export function UserMenu() {
         <Link to="/profile" className={classes.drawerLink}>
           <ListItem>
             <ListItemIcon>
-              <AccountCircle className={classes.userIcon} />
+              <AccountCircle />
             </ListItemIcon>
             <ListItemText>Profile</ListItemText>
           </ListItem>

@@ -50,7 +50,6 @@ const styles = makeStyles((theme) => ({
     position: "relative",
     textTransform: "none",
     minWidth: "320px",
-    fontFamily: "Montserrat",
   },
   googleLogo: {
     position: "absolute",
@@ -98,9 +97,6 @@ const styles = makeStyles((theme) => ({
     display: "flex",
     paddingBottom: 20,
     color: "#4D555A",
-  },
-  inputStyle: {
-    fontFamily: "Montserrat",
   },
   submit: {
     backgroundColor: "#37349A",

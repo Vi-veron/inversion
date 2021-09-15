@@ -34,7 +34,6 @@ const styles = makeStyles((theme) => ({
   item: {
     fontWeight: 500,
     marginTop: 15,
-
     padding: "20px 0",
     "@media (max-width: 1024px)": {
       fontSize: 12,

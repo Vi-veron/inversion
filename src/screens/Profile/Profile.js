@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, InputBase } from "@material-ui/core";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import styles from "./styles";
@@ -6,9 +6,35 @@ import useProfileQuery from "hooks/queries/useProfileQuery";
 import EmptyState from "components/EmptyState";
 import { ReactComponent as ErrorIllustration } from "assets/error-occured.svg";
 import LoadingState from "components/LoadingState";
+import GetAppIcon from "@material-ui/icons/GetApp";
 
 function Profile() {
   const classes = styles();
+
+  const [image, setImage] = useState({ preview: "", raw: "" });
+
+  const handleChange = (e) => {
+    if (e.target.files.length) {
+      setImage({
+        preview: URL.createObjectURL(e.target.files[0]),
+        raw: e.target.files[0],
+      });
+    }
+  };
+
+  const handleUpload = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", image.raw);
+
+    await fetch("YOUR_URL", {
+      method: "POST",
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      body: formData,
+    });
+  };
 
   const { data: users, isLoading, isError } = useProfileQuery();
 
@@ -42,39 +68,62 @@ function Profile() {
       </div>
       <div className={classes.main}>
         {users && (
-          <Grid container className={classes.root}>
+          <Grid className={classes.wrapper}>
             <Grid item xs={12}>
-              <Grid className={classes.wrapper} container>
+              <Grid container>
                 <Grid item xs={12} sm={3}>
-                  <div className={classes.image}>
-                    <p className={classes.imageText}>User Image</p>
+                  <div className={classes.imageContainer}>
+                    <label htmlFor="upload-button">
+                      {image.preview ? (
+                        <img
+                          src={image.preview}
+                          alt="dummy"
+                          className={classes.image}
+                        />
+                      ) : (
+                        <span className={classes.imageContent}>
+                          <GetAppIcon className={classes.uploadIcon} />
+                          <h5 className={classes.uploadText}>
+                            Upload your photo
+                          </h5>
+                        </span>
+                      )}
+                    </label>
+                    <input
+                      type="file"
+                      id="upload-button"
+                      style={{ display: "none" }}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "flex-end",
+                      marginTop: "1rem",
+                    }}
+                  >
+                    <button onClick={handleUpload}>Upload</button>
                   </div>
                 </Grid>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={9}>
                   <form className={classes.formDetails}>
                     <div className={classes.userInfo}>
                       <p className={classes.userName}>{users.name}</p>
                       <span className={classes.details}>
-                        <p className={classes.detailsInfo}>Username</p>
+                        <p className={classes.detailsInfo}>Username:</p>
                         <p className={classes.detailsContent}>
                           {users.username}
                         </p>
                       </span>
                       <span className={classes.details}>
-                        <p className={classes.detailsInfo}>Phone</p>
+                        <p className={classes.detailsInfo}>Phone:</p>
                         <p className={classes.detailsContent}>
                           +234{users.mobile}
                         </p>
                       </span>
                       <span className={classes.details}>
-                        <p className={classes.detailsInfo}>Address</p>
-                        <p className={classes.detailsContent}>
-                          Plot No 4 Balogun Street, Baale Street, Off
-                          Ishagatedo, Isolo, Lagos State.
-                        </p>
-                      </span>
-                      <span className={classes.details}>
-                        <p className={classes.detailsInfo}>Email</p>
+                        <p className={classes.detailsInfo}>Email:</p>
                         <p className={classes.detailsContent}>{users.email}</p>
                       </span>
                       <span className={classes.details}>
@@ -82,7 +131,7 @@ function Profile() {
                           className={classes.detailsInfo}
                           htmlFor="address"
                         >
-                          Address
+                          Address:
                         </label>
                         <InputBase
                           className={classes.detailsContent}
