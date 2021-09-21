@@ -1,6 +1,6 @@
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import { Paper, Typography, Button } from "@material-ui/core";
-import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import { Paper, Typography, Button } from "@mui/material";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { Link } from "react-router-dom";
 import styles from "./styles";
 

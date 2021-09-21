@@ -1,6 +1,6 @@
-import HighlightOffOutlinedIcon from "@material-ui/icons/HighlightOffOutlined";
-import { Paper, Typography, Button } from "@material-ui/core";
-import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
+import HighlightOffOutlinedIcon from "@mui/icons-material/HighlightOffOutlined";
+import { Paper, Typography, Button } from "@mui/material";
+import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import { Link } from "react-router-dom";
 import styles from "./styles";
 

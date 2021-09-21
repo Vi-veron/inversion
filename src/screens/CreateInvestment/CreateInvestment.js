@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AppBar from "components/AppBar";
-import { Paper, Grid, Hidden, Button } from "@material-ui/core";
+import { Paper, Grid, Hidden } from "@mui/material";
 import Sidebar from "components/SideBar";
 import "./style.scss";
 import EmptyState from "components/EmptyState";
@@ -8,13 +8,13 @@ import { ReactComponent as ErrorIllustration } from "assets/error-occured.svg";
 import LoadingState from "components/LoadingState";
 import Carousel from "react-elastic-carousel";
 import usePlansQuery from "hooks/queries/usePlansQuery";
-import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import CurrencyInput from "components/Form/CurrencyInput";
 import { useFormik } from "formik";
 import CreatePlanSchema from "./createplan.schema";
 import useCreateInvestmentMutation from "hooks/queries/useCreateInvestmentMutation";
 import useMutationNotifications from "hooks/useMutationNotifications";
-
+import { toast } from "react-hot-toast";
 import { planIconsCategoryMap } from "constants/data";
 
 const PlanIcon = ({ category }) => {
@@ -36,6 +36,11 @@ export default function CreateInvestment({ investmentId }) {
     entity: "investment",
     useServerMessage: false,
   });
+  useEffect(() => {
+    if (investmentCreationState.isError) {
+      toast.error(investmentCreationState.error.response.data.message);
+    }
+  }, [investmentCreationState.isError, investmentCreationState.error]);
 
   const formik = useFormik({
     initialValues: {
@@ -49,9 +54,12 @@ export default function CreateInvestment({ investmentId }) {
     },
   });
 
-  // useEffect(() => {}, []);
-
-  if (isLoading) return <LoadingState />;
+  if (isLoading)
+    return (
+      <div>
+        <LoadingState />
+      </div>
+    );
 
   if (isError)
     return (
@@ -94,85 +102,87 @@ export default function CreateInvestment({ investmentId }) {
         </Hidden>
 
         <Grid className="createInvestmentMain" item sm={10}>
-          <div className="createInvestmentWrapper">
-            <Paper className="createInvestmentContainer">
-              <Hidden xsDown>
-                <img src="img/investment-image.svg" className="image" alt="" />
-              </Hidden>
-              <form onSubmit={formik.handleSubmit} className="form">
-                <p className="imgHeader">Select an Investment Plan</p>
-                <Carousel
-                  easing="cubic-bezier(1,.15,.55,1.54)"
-                  tiltEasing="cubic-bezier(0.110, 1, 1.000, 0.210)"
-                  transitionMs={700}
-                  breakPoints={breakPoints}
-                  className="carousel"
-                >
-                  {plans.map((plan, idx) => {
-                    return (
-                      <div key={plan._id} className="card">
-                        <input
-                          className="plans"
-                          type="radio"
-                          id={`${plan._id}-${idx}`}
-                          name="id"
-                          onChange={formik.handleChange}
-                          value={plan._id}
+          <Paper className="createInvestmentContainer">
+            <Hidden xsDown>
+              <img src="img/investment-image.svg" className="image" alt="" />
+            </Hidden>
+            <form onSubmit={formik.handleSubmit} className="form">
+              <p className="imgHeader">Select an Investment Plan</p>
+              <Carousel
+                easing="cubic-bezier(1,.15,.55,1.54)"
+                tiltEasing="cubic-bezier(0.110, 1, 1.000, 0.210)"
+                transitionMs={700}
+                breakPoints={breakPoints}
+                className="carousel"
+              >
+                {plans.map((plan, idx) => {
+                  return (
+                    <div key={plan._id} className="card">
+                      <input
+                        className="plans"
+                        type="radio"
+                        id={`${plan._id}-${idx}`}
+                        name="id"
+                        onChange={formik.handleChange}
+                        value={plan._id}
+                      />
+                      <label
+                        className="planLabel"
+                        htmlFor={`${plan._id}-${idx}`}
+                      >
+                        <PlanIcon
+                          category={
+                            ["tourism"].includes(plan.category)
+                              ? plan.name
+                              : plan.category
+                          }
                         />
-                        <label
-                          className="planLabel"
-                          htmlFor={`${plan._id}-${idx}`}
-                        >
-                          <PlanIcon
-                            category={
-                              ["tourism"].includes(plan.category)
-                                ? plan.name
-                                : plan.category
-                            }
-                          />
 
-                          <h2 className="card-header">{plan.name}</h2>
-                          <p className="card-info">
-                            Get {plan.expectedReturn} every month
-                          </p>
-                        </label>
-                        {formik.touched.id && Boolean(formik.errors.id) ? (
-                          <div style={{ color: "red", paddingTop: 10 }}>
-                            Please select a plan!
-                          </div>
-                        ) : (
-                          ""
-                        )}
-                      </div>
-                    );
-                  })}
-                </Carousel>
+                        <h2 className="card-header">{plan.name}</h2>
+                        <p className="card-info">
+                          Get {plan.expectedReturn} every month
+                        </p>
+                      </label>
+                      {formik.touched.id && Boolean(formik.errors.id)
+                        ? toast.error(<p>Please select a plan!</p>)
+                        : ""}
+                    </div>
+                  );
+                })}
+              </Carousel>
 
-                <div className="makeInvestmentWrapper">
-                  <span className="currencyInput">
-                    <CurrencyInput
-                      label={"Amount"}
-                      id={"amount"}
-                      value={formik.values.amount}
-                      onChange={formik.handleChange}
-                      error={
-                        formik.touched.amount && Boolean(formik.errors.amount)
-                      }
-                      helperText={formik.touched.amount && formik.errors.amount}
-                    />
-                  </span>
-                  <span className="arrowForward">
-                    <ArrowForwardIcon />
-                  </span>
-                  <span className="btnWrapper">
-                    <Button type="submit" className="makeInvestment">
-                      Make Investment
-                    </Button>
-                  </span>
-                </div>
-              </form>
-            </Paper>
-          </div>
+              <div className="makeInvestmentWrapper">
+                <span className="currencyInput">
+                  <CurrencyInput
+                    label={"Amount"}
+                    id={"amount"}
+                    value={formik.values.amount}
+                    onChange={formik.handleChange}
+                    error={
+                      formik.touched.amount && Boolean(formik.errors.amount)
+                    }
+                    helperText={formik.touched.amount && formik.errors.amount}
+                  />
+                </span>
+                <span className="arrowForward">
+                  <ArrowForwardIcon />
+                </span>
+                <span
+                  style={{
+                    display: "flex",
+                    marginTop: 60,
+                    backgroundColor: "#ccc",
+                    height: 60,
+                  }}
+                  className="btnWrapper"
+                >
+                  <button type="submit" className="submit">
+                    Make Investment
+                  </button>
+                </span>
+              </div>
+            </form>
+          </Paper>
         </Grid>
       </Grid>
     </div>

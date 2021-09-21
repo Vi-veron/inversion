@@ -6,8 +6,8 @@ import {
   Typography,
   InputAdornment,
   IconButton,
-} from "@material-ui/core";
-import { Visibility, VisibilityOff } from "@material-ui/icons";
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { toast } from "react-toastify";
 import { useFormik } from "formik";
 import PasswordResetFormSchema from "./passwordreset.schema";
@@ -119,13 +119,7 @@ const PasswordResetForm = ({ token }) => {
           formik.touched.confirmPassword && formik.errors.confirmPassword
         }
       /> */}
-      <Button
-        className={classes.btn}
-        type="submit"
-        fullWidth
-        variant="contained"
-        color="primary"
-      >
+      <Button className={classes.submit} type="submit" fullWidth>
         Reset password
       </Button>
       <p>

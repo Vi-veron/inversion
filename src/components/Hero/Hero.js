@@ -4,7 +4,11 @@ function Hero() {
   const classes = styles();
   return (
     <div className={classes.hero}>
-      <img alt="" src={`/logo/investon-dark.svg`} className={classes.logo} />
+      <img
+        alt=""
+        src={`/logo/investon-dark-logo-with-text.svg`}
+        className={classes.logo}
+      />
 
       <p className={classes.heroText}>
         It is said that there is no such thing as a completely safe and secure

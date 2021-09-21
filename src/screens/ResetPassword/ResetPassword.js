@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid, Hidden, Button } from "@material-ui/core";
+import { Container, Grid, Hidden } from "@mui/material";
 import { Link } from "react-router-dom";
 import Hero from "components/Hero";
 import styles from "./styles";
@@ -26,7 +26,7 @@ function ResetPassword({ history, match }) {
         message="We just sent a reset link to your inbox."
       >
         <Link style={{ textDecoration: "none" }} to="/login">
-          <Button className={classes.loginBtn}>Back to login</Button>
+          Back to login
         </Link>
       </EmptyState>
     );

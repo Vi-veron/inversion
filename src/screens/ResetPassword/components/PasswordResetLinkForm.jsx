@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { TextField, Button, Typography } from "@material-ui/core";
+import { TextField, Button, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
@@ -62,13 +62,7 @@ const PasswordResetLinkForm = ({ onSuccess }) => {
           helperText={formik.touched.email && formik.errors.email}
           // {...textFieldProps}
         />
-        <Button
-          className={classes.btn}
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-        >
+        <Button className={classes.submit} type="submit" fullWidth>
           Reset Link
         </Button>
         <p>

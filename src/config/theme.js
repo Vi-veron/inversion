@@ -1,57 +1,97 @@
-import { DEFAULT_THEME } from "@zendeskgarden/react-theming";
-import { css } from "styled-components";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
-const brand = {
-  700: "#1D1A73",
-};
-
-const themeCreator = (parentTheme) => ({
-  ...parentTheme,
+export let theme = createTheme({
   components: {
-    "accordions.header": css`
-      border-bottom: ${(p) =>
-        `${p.theme.borderWidths.sm} ${p.theme.borderStyles.solid} ${p.theme.palette.brand[700]}`};
-    `,
-    "accordions.rotate_icon": css`
-      width: 24px;
-      height: 24px;
-    `,
-    "accordions.button": css`
-      color: ${(p) => p.theme.palette.brand[700]};
-      font-weight: 400;
-      &:focus {
-        outline: none;
-      }
-    `,
-    "forms.input": css`
-      font-weight: ${(p) => p.theme.fontWeights.medium};
-    `,
-    "forms.checkbox_label": css`
-      font-weight: 400;
-      &::before {
-        content: "";
-        border-color: ${(p) => p.theme.palette.brand[700]};
-      }
-    `,
-    "accordions.panel": css``,
-    "tab.tabslist": css`
-      overflow-x: scroll;
-    `,
+    // Name of the component
+    MuiButton: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          // Some CSS
+          padding: "0.5rem",
+          fontSize: "1rem",
+          textTransform: "none",
+        },
+      },
+    },
+
+    MuiDrawer: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: "#1D1A73",
+        },
+      },
+    },
+
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          fontSize: "1rem",
+          padding: "1.5rem",
+        },
+      },
+    },
+  },
+
+  typography: {
+    fontFamily: "Montserrat",
+    fontWeightLight: 400,
+    fontWeightRegular: 500,
+    fontWeightMedium: 600,
+    fontWeightBold: 700,
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+      xl: 1920,
+    },
   },
   palette: {
-    ...parentTheme.palette,
-    brand,
-  },
-  borderRadii: {
-    ...parentTheme.borderRadii,
-    md: "0",
-  },
-  colors: {
-    ...parentTheme.colors,
-    primaryHue: "brand",
+    primary: {
+      light: "#322dc8",
+      main: "#1d1a72",
+      dark: "#37349A",
+      contrastText: "#fff",
+    },
+    secondary: {
+      light: "#00D181",
+      main: "#1a731d",
+      dark: "",
+      contrastText: "#fff",
+    },
+    tertiary: {
+      light: "#9f2420",
+      main: "#731d1a",
+      dark: "",
+      contrastText: "#fff",
+    },
+    error: {
+      light: "",
+      main: "#F44335",
+      dark: "",
+      contrastText: "#fff",
+    },
+    warning: {
+      light: "",
+      main: "#FF9800",
+      dark: "",
+      contrastText: "#fff",
+    },
+    info: {
+      light: "",
+      main: "#11cb5f",
+      dark: "",
+      contrastText: "#fff",
+    },
+    success: {
+      light: "",
+      main: "#4BB04F",
+      dark: "",
+      contrastText: "#fff",
+    },
   },
 });
-
-export const theme = themeCreator(DEFAULT_THEME);
-
-export default themeCreator;
+theme = responsiveFontSizes(theme);

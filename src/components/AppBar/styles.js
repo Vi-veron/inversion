@@ -1,14 +1,11 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 
 const styles = makeStyles((theme) => ({
   appBar: {
     display: "flex",
     paddingLeft: 20,
     justifyContent: "space-between",
-    "@media (max-width: 420px)": {
-      minWidth: "100vw",
-    },
-    "@media (max-width: 540px)": {
+    [theme.breakpoints.down("sm")]: {
       minWidth: "100vw",
     },
   },
@@ -20,7 +17,6 @@ const styles = makeStyles((theme) => ({
     color: "#555",
   },
   drawerPaper: {
-    backgroundColor: "#1D1A73",
     width: 200,
   },
   link: {
@@ -29,10 +25,7 @@ const styles = makeStyles((theme) => ({
   },
   drawerLink: {
     textDecoration: "none",
-    color: "#111",
-  },
-  active: {
-    fontWeight: 900,
+    color: "#fff",
   },
   menuItem: {
     color: "#E0DFF6",
@@ -42,11 +35,19 @@ const styles = makeStyles((theme) => ({
     width: 40,
   },
   list: {
-    width: 300,
-    paddingTop: 40,
+    width: 250,
+    paddingTop: "3rem",
+    color: "#fff",
+  },
+  listItem: {
+    margin: "1rem 0",
+    "&:hover": {
+      backgroundColor: theme.palette.primary.dark,
+      color: theme.palette.primary.contrastText,
+    },
   },
   fullList: {
-    width: 300,
+    width: 250,
   },
 }));
 

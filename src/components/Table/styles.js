@@ -1,30 +1,19 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 
-const styles = makeStyles({
+const styles = makeStyles((theme) => ({
   root: {
     width: "74vw",
+    height: "100vh",
     minWidth: "350px",
-    paddingTop: 100,
-    marginLeft: 80,
     backgroundColor: "#fdfdfd",
-    "@media (max-width: 420px)": {
-      minWidth: "100vw",
-    },
-    "@media (max-width: 540px)": {
-      paddingTop: 20,
-      marginLeft: 30,
+    [theme.breakpoints.down("sm")]: {
       minWidth: "100vw",
     },
   },
   container: {
     height: "70vh",
     marginTop: 40,
-    "@media (max-width: 420px)": {
-      // maxHeight: "94vh",
-      marginTop: 20,
-    },
-    "@media (min-width: 540px)": {
-      // maxHeight: "60vh",
+    [theme.breakpoints.down("sm")]: {
       marginTop: 20,
     },
   },
@@ -33,7 +22,7 @@ const styles = makeStyles({
     fontWeight: 700,
     minWidth: 310,
     color: "#363499",
-    "@media (max-width: 540px)": {
+    [theme.breakpoints.down("sm")]: {
       fontSize: "1.4rem",
       paddingBottom: 10,
     },
@@ -41,7 +30,7 @@ const styles = makeStyles({
   titleBlock: {
     display: "flex",
     justifyContent: "space-between",
-    "@media (max-width: 540px)": {
+    [theme.breakpoints.down("sm")]: {
       flexDirection: "column",
     },
   },
@@ -50,13 +39,18 @@ const styles = makeStyles({
     textAlign: "center",
     color: "#fefefe",
     borderRadius: 5,
-    backgroundColor: "#37349A",
     marginRight: 20,
+    fontSize: 16,
+    padding: "1rem",
+    background: theme.palette.primary.main,
+    "&:hover": {
+      backgroundColor: theme.palette.primary.light,
+    },
   },
   stickyHead: {
-    minWidth: 150,
+    minWidth: 160,
     padding: "2% 4%",
-    fontSize: "110%",
+    fontSize: "9rem",
     fontWeight: 600,
     color: "#554",
   },
@@ -67,13 +61,8 @@ const styles = makeStyles({
     fontWeight: 500,
     minWidth: 150,
     "&:hover": {
-      color: "green",
+      color: theme.palette.secondary.main,
     },
   },
-  btn: {
-    color: "#fefefe",
-    textTransform: "none",
-    fontSize: 16,
-  },
-});
+}));
 export default styles;

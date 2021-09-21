@@ -7,9 +7,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Typography,
-  Button,
-} from "@material-ui/core/";
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import styles from "./styles";
 
@@ -47,14 +45,21 @@ const iconRenderer = (value) => {
 };
 
 const columns = [
-  { id: "investor", label: "Investor", minWidth: 150, render: iconRenderer },
+  {
+    id: "investor",
+    label: "Investor",
+
+    minWidth: 150,
+    render: iconRenderer,
+  },
   {
     id: "startDate",
     label: "Start Date",
     minWidth: 150,
+    align: "center",
     render: mutedRender,
   },
-  { id: "endDate", label: "End Date", minWidth: 150 },
+  { id: "endDate", label: "End Date", align: "center", minWidth: 150 },
   {
     id: "amount",
     label: "Amount",
@@ -70,7 +75,7 @@ const columns = [
     id: "phone",
     label: "Phone",
     minWidth: 150,
-    align: "right",
+    align: "center",
     render: mutedRender,
   },
 ];
@@ -219,11 +224,9 @@ export default function StickyHeadTable() {
   return (
     <div className={classes.root}>
       <div className={classes.titleBlock}>
-        <Typography className={classes.headerText}>
-          Manage Investments
-        </Typography>{" "}
+        <p className={classes.headerText}>Manage Investments</p>{" "}
         <Link to="/create-investment" className={classes.link}>
-          <Button className={classes.btn}>Create Investment</Button>{" "}
+          Create Investment
         </Link>
       </div>
 

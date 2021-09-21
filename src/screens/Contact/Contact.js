@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Typography, Grid, TextField } from "@material-ui/core";
+import { Typography, Grid, TextField } from "@mui/material";
 
-import ContactPhoneIcon from "@material-ui/icons/ContactPhone";
-import LocationOnIcon from "@material-ui/icons/LocationOn";
-import MailIcon from "@material-ui/icons/Mail";
-import { CheckCircleOutline } from "@material-ui/icons";
+import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import MailIcon from "@mui/icons-material/Mail";
+import { CheckCircleOutline } from "@mui/icons-material";
 import { useFormik } from "formik";
 
 import * as Yup from "yup";

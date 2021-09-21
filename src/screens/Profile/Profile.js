@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { Grid, InputBase } from "@material-ui/core";
-import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
+import { Grid, InputBase } from "@mui/material";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 import styles from "./styles";
 import useProfileQuery from "hooks/queries/useProfileQuery";
 import EmptyState from "components/EmptyState";
 import { ReactComponent as ErrorIllustration } from "assets/error-occured.svg";
 import LoadingState from "components/LoadingState";
-import GetAppIcon from "@material-ui/icons/GetApp";
+import UploadFileIcon from "@mui/icons-material/UploadFile";
 
 function Profile() {
   const classes = styles();
@@ -82,7 +82,7 @@ function Profile() {
                         />
                       ) : (
                         <span className={classes.imageContent}>
-                          <GetAppIcon className={classes.uploadIcon} />
+                          <UploadFileIcon className={classes.uploadIcon} />
                           <h5 className={classes.uploadText}>
                             Upload your photo
                           </h5>

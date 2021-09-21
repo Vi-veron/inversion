@@ -1,29 +1,33 @@
-import { makeStyles } from "@material-ui/core";
-import { green } from "@material-ui/core/colors";
+import { makeStyles } from "@mui/styles";
 
 const styles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    width: "100%",
+    width: "100vw",
+    height: "100vh",
+  },
+  hero: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
   },
   container: {
-    marginTop: 60,
-    marginLeft: 0,
-    "@media (max-width: 414px)": {
-      marginLeft: 16,
-      marginTop: 30,
+    marginTop: "3rem",
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "1rem",
     },
-    "@media (max-width: 320px)": {
-      marginRight: 20,
-      marginTop: 30,
-    },
+    // [theme.breakpoints.up("md")]: {
+    //   backgroundColor: "blue",
+    // },
+    // [theme.breakpoints.up("lg")]: {
+    //   backgroundColor: "pink",
+    // },
   },
   header: {
     fontSize: "1.5rem",
     textAlign: "left",
     color: "#292C30",
     fontWeight: 500,
-
     minWidth: 300,
   },
   subheader: {
@@ -34,16 +38,18 @@ const styles = makeStyles((theme) => ({
   },
   linkStyle: {
     textDecoration: "none",
-    color: "#37349A",
+    color: theme.palette.primary.dark,
     "&:hover": {
-      color: "#6A68A6",
+      color: theme.palette.primary.light,
     },
     "&:focus": {
-      color: "#37349A",
+      color: theme.palette.primary.dark,
     },
   },
   googleBtn: {
-    padding: "6px 0",
+    display: "flex",
+    justifyContent: "center",
+    padding: "0.8rem 0",
     fontSize: "1.1rem",
     width: "100%",
     fontWeight: 400,
@@ -51,14 +57,14 @@ const styles = makeStyles((theme) => ({
     color: "#111",
     border: "3px solid #E5ECF0",
     borderRadius: 5,
-    display: "flex",
     position: "relative",
     textTransform: "none",
-    minWidth: 300,
+    minWidth: "320px",
+    fontFamily: "Montserrat",
   },
   googleLogo: {
     position: "absolute",
-    top: 11,
+    top: 13,
   },
   googleBtnText: {
     paddingLeft: 30,
@@ -110,50 +116,14 @@ const styles = makeStyles((theme) => ({
     minWidth: 300,
   },
   submit: {
-    backgroundColor: "#37349A",
     margin: "20px 0",
     padding: 8,
-    textTransform: "none",
-    fontSize: 20,
     minWidth: 300,
     fontWeight: 500,
-  },
-  alertContainer: {
-    marginTop: 300,
-    minWidth: "326px",
-    "@media (max-width: 414px)": {
-      marginTop: 30,
-    },
-  },
-  alertContent: {
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
-  },
-  alertTitle: {
-    fontSize: "2.5rem",
-  },
-  alertMessage: {
     fontSize: "1.2rem",
-    textAlign: "center",
-  },
-  alertIcon: {
-    fontSize: 60,
-    color: "green",
-  },
-  alertLink: {
-    textDecoration: "none",
-  },
-  alertBtn: {
-    marginTop: 20,
-    padding: "4px 24px",
-    fontWeight: 600,
-    fontSize: "20px",
-    textTransform: "none",
-    backgroundColor: green[600],
-    color: "#fefefe",
-    border: "none",
-    borderRadius: 5,
+    "&:hover": {
+      backgroundColor: theme.palette.primary.light,
+    },
   },
 }));
 export default styles;

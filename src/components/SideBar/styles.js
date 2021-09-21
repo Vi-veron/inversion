@@ -1,35 +1,40 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 
 const styles = makeStyles((theme) => ({
   sideBar: {
     height: "100vh",
-    backgroundColor: "#1D1A73",
+    backgroundColor: theme.palette.primary.main,
+    "@media (max-width: 1024px)": {
+      width: 180,
+    },
   },
   logo: {
-    paddingLeft: 20,
-    paddingTop: 40,
+    paddingLeft: 34,
+    paddingTop: 80,
     width: 180,
-    "@media (max-width: 1024px)": {},
+    height: "20vh",
+    "@media (max-width: 1024px)": {
+      width: 120,
+    },
   },
   line: {
     margin: 30,
     opacity: 0.2,
   },
   sidebarItem: {
+    height: "70vh",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    height: "78vh",
     margin: 30,
     color: "#fff",
   },
   active: {
     fontWeight: 900,
+    fontSize: "5rem",
     marginTop: 15,
     padding: "20px 0",
-    "@media (max-width: 1024px)": {
-      fontSize: 12,
-    },
+    color: "red",
   },
   item: {
     fontWeight: 500,
@@ -44,7 +49,7 @@ const styles = makeStyles((theme) => ({
     color: "#fff",
   },
   btn: {
-    backgroundColor: "#1D1A73",
+    backgroundColor: theme.palette.primary.main,
     border: "none",
     color: "#fff",
   },

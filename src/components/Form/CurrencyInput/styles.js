@@ -1,11 +1,10 @@
-import { grey } from "@material-ui/core/colors";
-import { makeStyles } from "@material-ui/core";
+import { grey } from "@mui/material/colors";
+import { makeStyles } from "@mui/styles";
 
 const styles = makeStyles((theme) => ({
   root: {
-    paddingLeft: 40,
     marginTop: 10,
-    minWidth: 280,
+    minWidth: 150,
     // "& .MuiOutlinedInput-root": {
     //   "& fieldset": {
     //     borderColor: "#cecece",
@@ -23,7 +22,6 @@ const styles = makeStyles((theme) => ({
     // },
   },
   label: {
-    paddingLeft: 40,
     marginTop: 30,
     fontSize: "1.2rem",
     color: grey[800],

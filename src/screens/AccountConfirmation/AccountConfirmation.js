@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import { ReactComponent as ResetPasswordIllustration } from "assets/reset-password.svg";
 import { ReactComponent as ErrorOccurredIllustration } from "assets/error-occured.svg";
 
-import Button from "@material-ui/core/Button";
+import Button from "@mui/material/Button";
 import EmptyState from "components/EmptyState";
 import LoadingState from "components/LoadingState";
 

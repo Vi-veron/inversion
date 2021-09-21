@@ -1,21 +1,20 @@
 import React, { useEffect } from "react";
 import {
-  Hidden,
   Grid,
   TextField,
   Button,
   Container,
   IconButton,
   InputAdornment,
-} from "@material-ui/core/";
+} from "@mui/material";
 import Hero from "components/Hero";
 import { Link, useHistory } from "react-router-dom";
-import { Visibility, VisibilityOff } from "@material-ui/icons";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useFormik } from "formik";
 import axios from "axios";
 import { storeAuthToken } from "utils/authToken";
 import styles from "./styles";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 import LoginSchema from "./login.schema";
 import useLoginMutation from "hooks/queries/useLoginMutation";
 
@@ -76,19 +75,25 @@ const Login = () => {
   return (
     <div className={classes.root}>
       <Grid item xs={12} container>
-        <Hidden xsDown>
-          <Grid item sm={5}>
-            <Hero />
-          </Grid>
-        </Hidden>
-        <Grid item xs={7}>
+        <Grid className={classes.hero} item sm={5}>
+          <Hero />
+        </Grid>
+
+        <Grid
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+          item
+          sm={7}
+        >
           <Container component="main" maxWidth="sm">
             <div>
               <form
                 onSubmit={formik.handleSubmit}
                 className={classes.container}
               >
-                <p className={classes.header}>Log Into Your Account</p>
+                <h2 className={classes.header}>Log Into Your Account</h2>
                 <p className={classes.subheader}>
                   Don't have an account?{" "}
                   <Link className={classes.link} to="/register">
@@ -96,7 +101,7 @@ const Login = () => {
                     Sign Up
                   </Link>
                 </p>
-                <Button className={classes.googleBtn} onClick={googleLogin}>
+                <button className={classes.googleBtn} onClick={googleLogin}>
                   <span>
                     <img
                       alt=""
@@ -108,7 +113,7 @@ const Login = () => {
                     {" "}
                     Log in with Google
                   </span>
-                </Button>
+                </button>
                 <h2 className={classes.line}>
                   <span className={classes.lineText}>or</span>
                 </h2>
@@ -124,6 +129,7 @@ const Login = () => {
                     autoFocus
                     id="email"
                     name="email"
+                    autoComplete="email"
                     value={formik.values.email}
                     onChange={formik.handleChange}
                     error={formik.touched.email && Boolean(formik.errors.email)}
@@ -149,6 +155,7 @@ const Login = () => {
                     id="password"
                     name="password"
                     autoFocus
+                    autoComplete="current-password"
                     type={passwordVisibility.showPassword ? "text" : "password"}
                     InputProps={{
                       endAdornment: (
@@ -181,10 +188,9 @@ const Login = () => {
                 </Grid>
 
                 <Button
+                  variant="contained"
                   type="submit"
                   fullWidth
-                  variant="contained"
-                  color="primary"
                   className={classes.submit}
                 >
                   Log In

@@ -1,13 +1,18 @@
-import { makeStyles } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
 
 const styles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     width: "100%",
   },
+  hero: {
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
   container: {
-    "@media (max-width: 414px)": {
-      marginLeft: 16,
+    [theme.breakpoints.down("sm")]: {
+      marginTop: "1.5rem",
     },
   },
   header: {
@@ -15,11 +20,6 @@ const styles = makeStyles((theme) => ({
     textAlign: "left",
     color: "#292C30",
     fontWeight: 500,
-    marginTop: 150,
-    "@media (max-width: 540px)": {
-      minWidth: "370px",
-      marginTop: 20,
-    },
   },
   subheader: {
     textAlign: "left",
@@ -29,16 +29,18 @@ const styles = makeStyles((theme) => ({
   },
   link: {
     textDecoration: "none",
-    color: "#37349A",
+    color: theme.palette.primary.dark,
     "&:hover": {
-      color: "#6A68A6",
+      color: theme.palette.primary.light,
     },
     "&:focus": {
-      color: "#37349A",
+      color: theme.palette.primary.dark,
     },
   },
   googleBtn: {
-    padding: "6px 0",
+    display: "flex",
+    justifyContent: "center",
+    padding: "0.8rem 0",
     fontSize: "1.1rem",
     width: "100%",
     fontWeight: 400,
@@ -46,14 +48,14 @@ const styles = makeStyles((theme) => ({
     color: "#111",
     border: "3px solid #E5ECF0",
     borderRadius: 5,
-    display: "flex",
     position: "relative",
     textTransform: "none",
     minWidth: "320px",
+    fontFamily: "Montserrat",
   },
   googleLogo: {
     position: "absolute",
-    top: 11,
+    top: 13,
   },
   googleBtnText: {
     paddingLeft: 30,
@@ -99,13 +101,14 @@ const styles = makeStyles((theme) => ({
     color: "#4D555A",
   },
   submit: {
-    backgroundColor: "#37349A",
     margin: "20px 0",
+    fontSize: "1.2rem",
     padding: 8,
-    textTransform: "none",
-    fontSize: 20,
     minWidth: "320px",
     fontWeight: 500,
+    "&:hover": {
+      backgroundColor: theme.palette.primary.light,
+    },
   },
 }));
 export default styles;

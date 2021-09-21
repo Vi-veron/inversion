@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  Hidden,
   Grid,
   TextField,
   Button,
@@ -10,14 +9,14 @@ import {
   FormGroup,
   IconButton,
   InputAdornment,
-} from "@material-ui/core/";
+} from "@mui/material/";
 import Hero from "components/Hero";
 import { Link, useHistory } from "react-router-dom";
 import {
   Visibility,
   VisibilityOff,
   // CheckCircleOutline,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import { useFormik } from "formik";
 import axios from "axios";
 import styles from "./styles";
@@ -100,12 +99,18 @@ export default function Register() {
   return (
     <div className={classes.root}>
       <Grid item xs={12} container>
-        <Hidden xsDown>
-          <Grid item sm={5}>
-            <Hero />
-          </Grid>
-        </Hidden>
-        <Grid item xs={7}>
+        <Grid className={classes.hero} item sm={5}>
+          <Hero />
+        </Grid>
+
+        <Grid
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+          item
+          sm={7}
+        >
           <Container component="main" maxWidth="sm">
             <div>
               <form
@@ -113,7 +118,7 @@ export default function Register() {
                 className={classes.container}
               >
                 <div>
-                  <p className={classes.header}>Create an account</p>
+                  <h2 className={classes.header}>Create an account</h2>
                   <p className={classes.subheader}>
                     Already have an account?{" "}
                     <Link className={classes.linkStyle} to="/login">
@@ -122,7 +127,7 @@ export default function Register() {
                     </Link>
                   </p>
 
-                  <Button className={classes.googleBtn} onClick={googleSignup}>
+                  <button className={classes.googleBtn} onClick={googleSignup}>
                     <span>
                       <img
                         alt=""
@@ -134,7 +139,7 @@ export default function Register() {
                       {" "}
                       Sign up with Google
                     </span>
-                  </Button>
+                  </button>
                   <h2 className={classes.line}>
                     <span className={classes.lineText}>or</span>
                   </h2>
@@ -198,6 +203,7 @@ export default function Register() {
                       autoFocus
                       fullWidth
                       id="email"
+                      autoComplete="email"
                       name="email"
                       value={formik.values.email}
                       onChange={formik.handleChange}
@@ -239,6 +245,7 @@ export default function Register() {
                       fullWidth
                       id="password"
                       name="password"
+                      autoComplete="current-password"
                       autoFocus
                       type={
                         passwordVisibility.showPassword ? "text" : "password"
@@ -276,7 +283,10 @@ export default function Register() {
                   <FormGroup className={classes.checkbox} row>
                     <FormControlLabel
                       control={
-                        <Checkbox value="allowExtraEmails" color="primary" />
+                        <Checkbox
+                          value="allowExtraEmails"
+                          style={{ color: "#363499" }}
+                        />
                       }
                       label="I want to receive investments options and latest updates."
                       value={formik.values.checkbox}
@@ -286,10 +296,9 @@ export default function Register() {
                     />
                   </FormGroup>
                   <Button
+                    variant="contained"
                     type="submit"
                     fullWidth
-                    variant="contained"
-                    color="primary"
                     className={classes.submit}
                   >
                     Create Account

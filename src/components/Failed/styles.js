@@ -1,5 +1,4 @@
-import { makeStyles } from "@material-ui/core";
-import { red } from "@material-ui/core/colors";
+import { makeStyles } from "@mui/material";
 
 const styles = makeStyles((theme) => ({
   container: {
@@ -19,7 +18,7 @@ const styles = makeStyles((theme) => ({
     minWidth: "300px",
   },
   iconStyle: {
-    color: red[600],
+    color: "red",
     fontSize: "10rem",
   },
   header: {
@@ -33,13 +32,13 @@ const styles = makeStyles((theme) => ({
   },
   btnStyle: {
     margin: "6%",
-    backgroundColor: red[600],
+    backgroundColor: "red",
     color: "#fefefe",
     textTransform: "none",
   },
   linkStyle: {
     textDecoration: "none",
-    backgroundColor: red[600],
+    backgroundColor: "red",
     color: "#fefefe",
   },
 }));

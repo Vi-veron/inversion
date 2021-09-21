@@ -9,14 +9,14 @@ import {
   ListItemIcon,
   Badge,
   Divider,
-} from "@material-ui/core";
+} from "@mui/material";
 import {
   Menu,
   AccountCircle,
   Notifications,
   Settings,
   Help,
-} from "@material-ui/icons";
+} from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import styles from "./styles";
 import SideBar from "../SideBar";
@@ -49,17 +49,17 @@ export function UserMenu() {
     >
       <List>
         <Link to="/profile" className={classes.drawerLink}>
-          <ListItem>
+          <ListItem className={classes.listItem}>
             <ListItemIcon>
-              <AccountCircle />
+              <AccountCircle className={classes.drawerLink} />
             </ListItemIcon>
             <ListItemText>Profile</ListItemText>
           </ListItem>
         </Link>
-        <ListItem>
+        <ListItem className={classes.listItem}>
           <ListItemIcon>
-            <Badge badgeContent={11} color="secondary">
-              <Notifications />
+            <Badge badgeContent={11} color="error">
+              <Notifications className={classes.drawerLink} />
             </Badge>
           </ListItemIcon>
           <ListItemText>Notifications</ListItemText>
@@ -67,15 +67,15 @@ export function UserMenu() {
       </List>
       <Divider />
       <List>
-        <ListItem>
+        <ListItem className={classes.listItem}>
           <ListItemIcon>
-            <Settings />
+            <Settings className={classes.drawerLink} />
           </ListItemIcon>
           <ListItemText>Settings</ListItemText>
         </ListItem>
-        <ListItem>
+        <ListItem className={classes.listItem}>
           <ListItemIcon>
-            <Help />
+            <Help className={classes.drawerLink} />
           </ListItemIcon>
           <ListItemText>Help</ListItemText>
         </ListItem>

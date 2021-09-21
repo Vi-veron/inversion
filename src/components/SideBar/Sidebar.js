@@ -1,5 +1,11 @@
-import { TrendingUp, ExitToApp } from "@material-ui/icons";
-import { MenuItem } from "@material-ui/core";
+import { TrendingUp, ExitToApp } from "@mui/icons-material";
+import {
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { removeAuthToken } from "../../utils/authToken";
@@ -19,20 +25,26 @@ function Sidebar() {
     <div className={classes.sideBar}>
       <img alt="" src="logo/investon-dark.svg" className={classes.logo} />
       <hr className={classes.line} />
-      <div className={classes.sidebarItem}>
-        <Link to="/dashboard" className={classes.link}>
-          <MenuItem className={classes.active}>
-            <TrendingUp />
-            <span className={classes.menuItem}> Dashboard</span>
-          </MenuItem>
-        </Link>
-        <button className={classes.btn}>
-          <MenuItem onClick={handleLogout} className={classes.item}>
-            <ExitToApp />
-            <span className={classes.menuItem}> Log out</span>
-          </MenuItem>
-        </button>
-      </div>
+      <List className={classes.sidebarItem}>
+        <ListItem>
+          <Link to="/dashboard" className={classes.link}>
+            <ListItemButton>
+              <ListItemIcon>
+                <TrendingUp style={{ color: "#fff" }} />
+              </ListItemIcon>
+              <ListItemText>Dashboard</ListItemText>
+            </ListItemButton>
+          </Link>
+        </ListItem>
+        <ListItem className={classes.item}>
+          <ListItemButton onClick={handleLogout}>
+            <ListItemIcon>
+              <ExitToApp style={{ color: "#fff" }} />
+            </ListItemIcon>
+            <ListItemText style={{ color: "#fff" }} primary="Log out" />
+          </ListItemButton>
+        </ListItem>
+      </List>
     </div>
   );
 }

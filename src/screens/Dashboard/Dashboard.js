@@ -1,6 +1,5 @@
 import EnhancedTable from "components/Table";
-import { Grid, Hidden } from "@material-ui/core";
-
+import { Grid, Hidden } from "@mui/material";
 import Sidebar from "components/SideBar";
 import AppBar from "components/AppBar";
 import styles from "./styles";
@@ -13,7 +12,7 @@ function Dashboard() {
     <div className={classes.root}>
       <Grid container>
         <Hidden xsDown>
-          <Grid item xs={12} sm={2}>
+          <Grid className={classes.hide} item xs={12} sm={2}>
             <Sidebar />
           </Grid>
         </Hidden>
@@ -23,19 +22,20 @@ function Dashboard() {
         </Hidden>
 
         <Grid item sm={10}>
-          <Hidden xsDown>
-            <nav
-              style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                marginRight: "4rem",
-                paddingTop: "1.5rem",
-              }}
-            >
+          <div className={classes.hide}>
+            <nav className={classes.nav}>
               <UserMenu />
             </nav>
-          </Hidden>
-          <EnhancedTable />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "2rem 0",
+            }}
+          >
+            <EnhancedTable />
+          </div>
         </Grid>
       </Grid>
     </div>

@@ -5,7 +5,7 @@ import {
   TextField,
   IconButton,
   InputAdornment,
-} from "@material-ui/core";
+} from "@mui/material";
 import NumberFormat from "react-number-format";
 import styles from "./styles";
 

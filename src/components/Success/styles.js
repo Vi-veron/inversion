@@ -1,5 +1,5 @@
-import { green } from "@material-ui/core/colors";
-import { makeStyles } from "@material-ui/core";
+import { green } from "@mui/material/colors";
+import { makeStyles } from "@mui/material";
 
 const styles = makeStyles((theme) => ({
   container: {

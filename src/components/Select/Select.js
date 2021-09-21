@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Select, MenuItem } from "@material-ui/core";
-import FormControl from "@material-ui/core/FormControl";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Select, MenuItem } from "@mui/material";
+import FormControl from "@mui/material/FormControl";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import styles from "./styles";
 
 const BorderSelect = () => {
