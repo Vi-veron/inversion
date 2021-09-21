@@ -1,24 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import AppRouter from "./components/AppRouter/AppRouter";
+import { toast, Toaster, ToastBar } from "react-hot-toast";
+import { ThemeProvider } from "@mui/material/styles";
+import { theme } from "config/theme";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <ThemeProvider theme={theme}>
+      <div className="App">
+        <AppRouter />
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            className: "",
+            duration: 5000,
+            style: {
+              padding: "16px",
+            },
+            success: {
+              style: {
+                color: "green",
+              },
+            },
+            error: {
+              style: {
+                color: "#713200",
+              },
+            },
+          }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          {(t) => (
+            <ToastBar toast={t}>
+              {({ icon, message }) => (
+                <>
+                  {message}
+                  {t.type !== "loading" && (
+                    <button
+                      style={{ border: "none", cursor: "pointer" }}
+                      onClick={() => toast.dismiss(t.id)}
+                    >
+                      {icon}
+                    </button>
+                  )}
+                </>
+              )}
+            </ToastBar>
+          )}
+        </Toaster>
+      </div>
+    </ThemeProvider>
   );
 }
 

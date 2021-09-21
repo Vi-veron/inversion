@@ -1,0 +1,39 @@
+.EmptyState {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  &__Art {
+    margin-top: 6rem;
+    margin-bottom: 4rem;
+
+    svg {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+}
+@media only screen and (max-width: 540px) {
+  .EmptyState {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    &__Art {
+      margin-top: 3rem;
+      margin-bottom: 0;
+
+      svg {
+        max-width: 100%;
+        max-height: 50vh;
+      }
+    }
+  }
+}
