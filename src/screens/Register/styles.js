@@ -49,7 +49,7 @@ const styles = makeStyles((theme) => ({
     width: "100%",
     fontWeight: 500,
     backgroundColor: "#fff",
-    color: "#222  ",
+    color: "#222",
     border: "2px solid #E5ECF0",
     borderRadius: 5,
     position: "relative",
@@ -74,9 +74,8 @@ const styles = makeStyles((theme) => ({
     textAlign: "center",
     borderBottom: "2px solid #E5ECF0",
     lineHeight: "0.1em",
-
     marginTop: "1.875rem",
-    marginBottom: "3rem",
+    marginBottom: "4rem",
   },
   lineText: {
     background: "#fff",
@@ -115,8 +114,8 @@ const styles = makeStyles((theme) => ({
     paddingBottom: "0.8rem",
   },
   submit: {
-    fontWeight: 500,
-    fontSize: "1.2rem",
+    padding: "0.8rem",
+    fontSize: "0.8rem",
     "&:hover": {
       backgroundColor: theme.palette.primary.light,
     },

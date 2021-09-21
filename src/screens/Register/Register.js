@@ -245,16 +245,14 @@ export default function Register() {
                     variant="outlined"
                     fullWidth
                     id="password"
-                    inputProps={{
-                      style: {
-                        fontSize: "0.8rem",
-                      },
-                    }}
                     name="password"
                     autoComplete="current-password"
                     autoFocus
                     type={passwordVisibility.showPassword ? "text" : "password"}
                     InputProps={{
+                      style: {
+                        fontSize: "0.8rem",
+                      },
                       endAdornment: (
                         <InputAdornment position="end">
                           <IconButton
