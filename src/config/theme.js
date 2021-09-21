@@ -30,14 +30,13 @@ export let theme = createTheme({
       },
     },
 
-    // MuiTableCell: {
-    //   styleOverrides: {
-    //     root: {
-    //       fontSize: "1rem",
-    //       padding: "1.5rem",
-    //     },
-    //   },
-    // },
+    MuiTableCell: {
+      styleOverrides: {
+        root: {
+          padding: "0.8rem",
+        },
+      },
+    },
   },
 
   typography: {
