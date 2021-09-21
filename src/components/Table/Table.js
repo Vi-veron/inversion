@@ -48,7 +48,7 @@ const columns = [
   {
     id: "investor",
     label: "Investor",
-
+    align: "center",
     minWidth: 150,
     render: iconRenderer,
   },

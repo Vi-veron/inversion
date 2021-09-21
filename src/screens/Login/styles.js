@@ -3,7 +3,8 @@ import { makeStyles } from "@mui/styles";
 const styles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    width: "100%",
+    width: "100vw",
+    height: "100vh",
   },
   hero: {
     [theme.breakpoints.down("sm")]: {
@@ -11,21 +12,24 @@ const styles = makeStyles((theme) => ({
     },
   },
   container: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
     [theme.breakpoints.down("sm")]: {
-      marginTop: "1.5rem",
+      padding: "50% 10%",
     },
   },
   header: {
-    fontSize: "1.5rem",
+    fontSize: "1.2rem",
     textAlign: "left",
     color: "#292C30",
     fontWeight: 500,
   },
   subheader: {
+    fontSize: "0.8rem",
     textAlign: "left",
-    padding: "30px 0",
+    padding: "1rem 0",
     color: "#879197",
-    minWidth: "320px",
   },
   link: {
     textDecoration: "none",
@@ -40,22 +44,25 @@ const styles = makeStyles((theme) => ({
   googleBtn: {
     display: "flex",
     justifyContent: "center",
-    padding: "0.8rem 0",
-    fontSize: "1.1rem",
+    padding: "0.5rem 0",
+    fontSize: "0.8rem",
     width: "100%",
-    fontWeight: 400,
+    fontWeight: 500,
     backgroundColor: "#fff",
     color: "#111",
-    border: "3px solid #E5ECF0",
+    border: "2px solid #E5ECF0",
     borderRadius: 5,
     position: "relative",
     textTransform: "none",
-    minWidth: "320px",
     fontFamily: "Montserrat",
+    "&:hover": {
+      backgroundColor: "#eaeaea",
+      border: "none",
+    },
   },
   googleLogo: {
     position: "absolute",
-    top: 13,
+    top: 6,
   },
   googleBtnText: {
     paddingLeft: 30,
@@ -64,10 +71,10 @@ const styles = makeStyles((theme) => ({
   line: {
     width: "100%",
     textAlign: "center",
-    borderBottom: "3px solid #E5ECF0",
+    borderBottom: "2px solid #E5ECF0",
     lineHeight: "0.1em",
-    minWidth: "320px",
-    margin: "60px 0 40px",
+    marginTop: "1.875rem",
+    marginBottom: "1.8rem",
   },
   lineText: {
     background: "#fff",
@@ -79,33 +86,46 @@ const styles = makeStyles((theme) => ({
   wrapper: {
     display: "flex",
     flexDirection: "row",
-    paddingTop: 80,
     position: "relative",
     color: "#4D555A",
-    minWidth: "320px",
   },
   gridWrapper: {
-    paddingRight: 20,
+    paddingRight: "0.5rem",
+    paddingBottom: "0.5rem",
   },
   wrapperLabel: {
     position: "absolute",
-    bottom: 70,
+    bottom: "4rem",
+    paddingBottom: "0.5rem",
+    fontSize: "0.8rem",
   },
   gridStyle: {
-    padding: "20px 0",
-    minWidth: "320px",
+    minWidth: 300,
+    paddingTop: 0,
+    paddingBottom: 10,
   },
   labelStyle: {
+    fontSize: "0.8rem",
     display: "flex",
-    paddingBottom: 20,
+    padding: "10px 0",
     color: "#4D555A",
   },
+  forgotPassword: {
+    fontSize: "0.8rem",
+    display: "flex",
+    padding: "10px 0",
+    textDecoration: "none",
+    color: theme.palette.primary.dark,
+    "&:hover": {
+      color: theme.palette.primary.light,
+    },
+    "&:focus": {
+      color: theme.palette.primary.dark,
+    },
+  },
   submit: {
-    margin: "20px 0",
-    fontSize: "1.2rem",
-    padding: 8,
-    minWidth: "320px",
-    fontWeight: 500,
+    padding: "0.8rem",
+    fontSize: "0.8rem",
     "&:hover": {
       backgroundColor: theme.palette.primary.light,
     },

@@ -3,7 +3,7 @@ import { makeStyles } from "@mui/styles";
 const styles = makeStyles((theme) => ({
   root: {
     width: "74vw",
-    height: "100vh",
+    maxHeight: "50vh",
     minWidth: "350px",
     backgroundColor: "#fdfdfd",
     [theme.breakpoints.down("sm")]: {
@@ -12,18 +12,19 @@ const styles = makeStyles((theme) => ({
   },
   container: {
     height: "70vh",
-    marginTop: 40,
+    marginTop: "2.2rem",
     [theme.breakpoints.down("sm")]: {
       marginTop: 20,
     },
   },
   headerText: {
-    fontSize: "1.8rem",
+    fontSize: "1.2rem",
     fontWeight: 700,
     minWidth: 310,
     color: "#363499",
     [theme.breakpoints.down("sm")]: {
       fontSize: "1.4rem",
+      paddingLeft: "1rem",
       paddingBottom: 10,
     },
   },
@@ -40,17 +41,20 @@ const styles = makeStyles((theme) => ({
     color: "#fefefe",
     borderRadius: 5,
     marginRight: 20,
-    fontSize: 16,
-    padding: "1rem",
+    fontWeight: 500,
+    fontSize: "0.8rem",
+    padding: "0.5rem 1rem",
     background: theme.palette.primary.main,
+    [theme.breakpoints.down("sm")]: {
+      margin: "0 1rem",
+    },
     "&:hover": {
       backgroundColor: theme.palette.primary.light,
     },
   },
   stickyHead: {
     minWidth: 160,
-    padding: "2% 4%",
-    fontSize: "9rem",
+    fontSize: "1rem",
     fontWeight: 600,
     color: "#554",
   },
