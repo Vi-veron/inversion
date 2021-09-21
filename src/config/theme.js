@@ -8,9 +8,16 @@ export let theme = createTheme({
         // Name of the slot
         root: {
           // Some CSS
-          padding: "0.5rem",
-          fontSize: "1rem",
+          padding: "0.8rem",
+          fontSize: "0.8rem",
           textTransform: "none",
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          fontSize: "0.8rem",
         },
       },
     },
@@ -23,14 +30,14 @@ export let theme = createTheme({
       },
     },
 
-    MuiTableCell: {
-      styleOverrides: {
-        root: {
-          fontSize: "1rem",
-          padding: "1.5rem",
-        },
-      },
-    },
+    // MuiTableCell: {
+    //   styleOverrides: {
+    //     root: {
+    //       fontSize: "1rem",
+    //       padding: "1.5rem",
+    //     },
+    //   },
+    // },
   },
 
   typography: {

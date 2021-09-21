@@ -103,209 +103,206 @@ export default function Register() {
           <Hero />
         </Grid>
 
-        <Grid
-          style={{
-            display: "flex",
-            alignItems: "center",
-          }}
-          item
-          sm={7}
-        >
-          <Container component="main" maxWidth="sm">
-            <div>
-              <form
-                onSubmit={formik.handleSubmit}
-                className={classes.container}
-              >
-                <div>
-                  <h2 className={classes.header}>Create an account</h2>
-                  <p className={classes.subheader}>
-                    Already have an account?{" "}
-                    <Link className={classes.linkStyle} to="/login">
-                      {" "}
-                      Log In
-                    </Link>
-                  </p>
+        <Grid className={classes.container} item sm={7}>
+          <Container component="main" maxWidth="xs">
+            <form onSubmit={formik.handleSubmit}>
+              <div>
+                <h2 className={classes.header}>Create an account</h2>
+                <p className={classes.subheader}>
+                  Already have an account?{" "}
+                  <Link className={classes.linkStyle} to="/login">
+                    Log In
+                  </Link>
+                </p>
 
-                  <button className={classes.googleBtn} onClick={googleSignup}>
-                    <span>
-                      <img
-                        alt=""
-                        src="https://img.icons8.com/fluent/20/000000/google-logo.png"
-                        className={classes.googleLogo}
-                      />
-                    </span>
-                    <span className={classes.googleBtnText}>
-                      {" "}
-                      Sign up with Google
-                    </span>
-                  </button>
-                  <h2 className={classes.line}>
-                    <span className={classes.lineText}>or</span>
-                  </h2>
-
-                  <div className={classes.wrapper}>
-                    <Grid item className={classes.gridWrapper} xs={6}>
-                      <label htmlFor="name" className={classes.wrapperLabel}>
-                        Name
-                      </label>
-                      <TextField
-                        autoComplete="name"
-                        name="name"
-                        variant="outlined"
-                        required
-                        fullWidth
-                        id="name"
-                        autoFocus
-                        value={formik.values.name}
-                        onChange={formik.handleChange}
-                        error={
-                          formik.touched.name && Boolean(formik.errors.name)
-                        }
-                        helperText={formik.touched.name && formik.errors.name}
-                      />
-                    </Grid>
-                    <Grid item xs={6}>
-                      <label
-                        htmlFor="username"
-                        className={classes.wrapperLabel}
-                      >
-                        User Name
-                      </label>
-                      <TextField
-                        autoComplete="username"
-                        name="username"
-                        variant="outlined"
-                        required
-                        fullWidth
-                        id="username"
-                        autoFocus
-                        value={formik.values.username}
-                        onChange={formik.handleChange}
-                        error={
-                          formik.touched.username &&
-                          Boolean(formik.errors.username)
-                        }
-                        helperText={
-                          formik.touched.username && formik.errors.username
-                        }
-                      />
-                    </Grid>
-                  </div>
-
-                  <Grid className={classes.gridStyle} item xs={12}>
-                    <label htmlFor="email" className={classes.labelStyle}>
-                      Email Address
-                    </label>
-                    <TextField
-                      variant="outlined"
-                      required
-                      autoFocus
-                      fullWidth
-                      id="email"
-                      autoComplete="email"
-                      name="email"
-                      value={formik.values.email}
-                      onChange={formik.handleChange}
-                      error={
-                        formik.touched.email && Boolean(formik.errors.email)
-                      }
-                      helperText={formik.touched.email && formik.errors.email}
+                <button className={classes.googleBtn} onClick={googleSignup}>
+                  <span>
+                    <img
+                      alt=""
+                      src="https://img.icons8.com/fluent/20/000000/google-logo.png"
+                      className={classes.googleLogo}
                     />
-                  </Grid>
+                  </span>
+                  <span className={classes.googleBtnText}>
+                    {" "}
+                    Sign up with Google
+                  </span>
+                </button>
+                <h2 className={classes.line}>
+                  <span className={classes.lineText}>or</span>
+                </h2>
 
-                  <Grid item className={classes.gridStyle} xs={12}>
-                    <label htmlFor="mobile" className={classes.labelStyle}>
-                      Phone Number
+                <div className={classes.wrapper}>
+                  <Grid item className={classes.gridWrapper} xs={6}>
+                    <label htmlFor="name" className={classes.wrapperLabel}>
+                      Name
                     </label>
                     <TextField
-                      autoComplete="mobile"
-                      name="mobile"
+                      autoComplete="name"
+                      name="name"
                       variant="outlined"
                       required
                       fullWidth
-                      type="tel"
-                      id="mobile"
-                      autoFocus
-                      value={formik.values.mobile}
-                      onChange={formik.handleChange}
-                      error={
-                        formik.touched.mobile && Boolean(formik.errors.mobile)
-                      }
-                      helperText={formik.touched.mobile && formik.errors.mobile}
-                    />
-                  </Grid>
-
-                  <Grid className={classes.gridStyle} item xs={12}>
-                    <label htmlFor="password" className={classes.labelStyle}>
-                      Password
-                    </label>
-                    <TextField
-                      variant="outlined"
-                      fullWidth
-                      id="password"
-                      name="password"
-                      autoComplete="current-password"
-                      autoFocus
-                      type={
-                        passwordVisibility.showPassword ? "text" : "password"
-                      }
-                      InputProps={{
-                        endAdornment: (
-                          <InputAdornment position="end">
-                            <IconButton
-                              aria-label="toggle password visibility"
-                              onClick={handleClickShowPassword}
-                              onMouseDown={handleMouseDownPassword}
-                              edge="end"
-                            >
-                              {passwordVisibility.showPassword ? (
-                                <Visibility />
-                              ) : (
-                                <VisibilityOff />
-                              )}
-                            </IconButton>
-                          </InputAdornment>
-                        ),
+                      inputProps={{
+                        style: {
+                          fontSize: "0.8rem",
+                        },
                       }}
-                      value={formik.values.password}
-                      onChange={formik.handleChange("password")}
-                      error={
-                        formik.touched.password &&
-                        Boolean(formik.errors.password)
-                      }
+                      id="name"
+                      autoFocus
+                      value={formik.values.name}
+                      onChange={formik.handleChange}
+                      error={formik.touched.name && Boolean(formik.errors.name)}
+                      helperText={formik.touched.name && formik.errors.name}
+                    />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <label htmlFor="username" className={classes.wrapperLabel}>
+                      User Name
+                    </label>
+                    <TextField
+                      autoComplete="username"
+                      name="username"
+                      variant="outlined"
                       required
+                      fullWidth
+                      id="username"
+                      inputProps={{
+                        style: {
+                          fontSize: "0.8rem",
+                        },
+                      }}
+                      autoFocus
+                      value={formik.values.username}
+                      onChange={formik.handleChange}
+                      error={
+                        formik.touched.username &&
+                        Boolean(formik.errors.username)
+                      }
                       helperText={
-                        formik.touched.password && formik.errors.password
+                        formik.touched.username && formik.errors.username
                       }
                     />
                   </Grid>
-                  <FormGroup className={classes.checkbox} row>
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          value="allowExtraEmails"
-                          style={{ color: "#363499" }}
-                        />
-                      }
-                      label="I want to receive investments options and latest updates."
-                      value={formik.values.checkbox}
-                      onChange={handleChecked}
-                      checked={checked}
-                      // inputProps={{ "aria-label": "primary checkbox" }}
-                    />
-                  </FormGroup>
-                  <Button
-                    variant="contained"
-                    type="submit"
-                    fullWidth
-                    className={classes.submit}
-                  >
-                    Create Account
-                  </Button>
                 </div>
-              </form>
-            </div>
+
+                <Grid className={classes.gridStyle} item xs={12}>
+                  <label htmlFor="email" className={classes.labelStyle}>
+                    Email Address
+                  </label>
+                  <TextField
+                    variant="outlined"
+                    required
+                    autoFocus
+                    fullWidth
+                    id="email"
+                    inputProps={{
+                      style: {
+                        fontSize: "0.8rem",
+                      },
+                    }}
+                    autoComplete="email"
+                    name="email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    error={formik.touched.email && Boolean(formik.errors.email)}
+                    helperText={formik.touched.email && formik.errors.email}
+                  />
+                </Grid>
+
+                <Grid item className={classes.gridStyle} xs={12}>
+                  <label htmlFor="mobile" className={classes.labelStyle}>
+                    Phone Number
+                  </label>
+                  <TextField
+                    autoComplete="mobile"
+                    name="mobile"
+                    variant="outlined"
+                    required
+                    inputProps={{
+                      style: {
+                        fontSize: "0.8rem",
+                      },
+                    }}
+                    fullWidth
+                    type="tel"
+                    id="mobile"
+                    autoFocus
+                    value={formik.values.mobile}
+                    onChange={formik.handleChange}
+                    error={
+                      formik.touched.mobile && Boolean(formik.errors.mobile)
+                    }
+                    helperText={formik.touched.mobile && formik.errors.mobile}
+                  />
+                </Grid>
+
+                <Grid className={classes.gridStyle} item xs={12}>
+                  <label htmlFor="password" className={classes.labelStyle}>
+                    Password
+                  </label>
+                  <TextField
+                    variant="outlined"
+                    fullWidth
+                    id="password"
+                    inputProps={{
+                      style: {
+                        fontSize: "0.8rem",
+                      },
+                    }}
+                    name="password"
+                    autoComplete="current-password"
+                    autoFocus
+                    type={passwordVisibility.showPassword ? "text" : "password"}
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {passwordVisibility.showPassword ? (
+                              <Visibility />
+                            ) : (
+                              <VisibilityOff />
+                            )}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                    value={formik.values.password}
+                    onChange={formik.handleChange("password")}
+                    error={
+                      formik.touched.password && Boolean(formik.errors.password)
+                    }
+                    required
+                    helperText={
+                      formik.touched.password && formik.errors.password
+                    }
+                  />
+                </Grid>
+                <FormGroup row>
+                  <FormControlLabel
+                    control={<Checkbox value="allowExtraEmails" />}
+                    label="I want to receive investments options and latest updates."
+                    value={formik.values.checkbox}
+                    onChange={handleChecked}
+                    checked={checked}
+                    className={classes.checkbox}
+                  />
+                </FormGroup>
+                <Button
+                  variant="contained"
+                  type="submit"
+                  fullWidth
+                  className={classes.submit}
+                >
+                  Create Account
+                </Button>
+              </div>
+            </form>
           </Container>
         </Grid>
       </Grid>
