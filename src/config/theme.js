@@ -8,9 +8,16 @@ export let theme = createTheme({
         // Name of the slot
         root: {
           // Some CSS
-          padding: "0.8rem",
           fontSize: "0.8rem",
           textTransform: "none",
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        // Name of the slot
+        input: {
+          padding: "0.8rem 0.8rem",
         },
       },
     },
@@ -25,7 +32,7 @@ export let theme = createTheme({
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          backgroundColor: "#1D1A73",
+          backgroundColor: "#fff",
         },
       },
     },
@@ -33,7 +40,7 @@ export let theme = createTheme({
     MuiTableCell: {
       styleOverrides: {
         root: {
-          padding: "0.8rem",
+          padding: "0.4rem",
         },
       },
     },
@@ -50,7 +57,7 @@ export let theme = createTheme({
     values: {
       xs: 0,
       sm: 600,
-      md: 960,
+      md: 1024,
       lg: 1280,
       xl: 1920,
     },
