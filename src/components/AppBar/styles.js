@@ -6,7 +6,7 @@ const styles = makeStyles((theme) => ({
     paddingLeft: 20,
     justifyContent: "space-between",
     [theme.breakpoints.down("sm")]: {
-      minWidth: "100vw",
+      width: "100vw",
     },
   },
   menu: {
@@ -25,7 +25,7 @@ const styles = makeStyles((theme) => ({
   },
   drawerLink: {
     textDecoration: "none",
-    color: "#fff",
+    color: "#111",
   },
   menuItem: {
     color: "#E0DFF6",
@@ -41,9 +41,10 @@ const styles = makeStyles((theme) => ({
   },
   listItem: {
     margin: "1rem 0",
+    color: "#111",
     "&:hover": {
-      backgroundColor: theme.palette.primary.dark,
-      color: theme.palette.primary.contrastText,
+      backgroundColor: "#eaeaea",
+      color: "#111",
     },
   },
   fullList: {

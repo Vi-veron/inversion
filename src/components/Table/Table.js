@@ -34,10 +34,17 @@ const iconRenderer = (value) => {
         <img
           alt="img"
           src={photos[randomImg]}
-          style={{ width: 30, borderRadius: 20 }}
+          style={{ width: 30, marginTop: 8, borderRadius: 20 }}
         />
       </span>
-      <span style={{ position: "absolute", left: 50, top: 8, minWidth: 100 }}>
+      <span
+        style={{
+          position: "absolute",
+          paddingLeft: "3rem",
+          top: 12,
+          minWidth: 100,
+        }}
+      >
         {value}
       </span>
     </div>

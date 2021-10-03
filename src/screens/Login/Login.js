@@ -40,8 +40,8 @@ const Login = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: "example@example.com",
-      password: "example",
+      email: "",
+      password: "",
     },
     validationSchema: LoginSchema,
     onSubmit: async (payload, values) => {
@@ -122,7 +122,6 @@ const Login = () => {
                       fontSize: "0.8rem",
                     },
                   }}
-                  autoComplete="email"
                   name="email"
                   value={formik.values.email}
                   onChange={formik.handleChange}
@@ -140,12 +139,12 @@ const Login = () => {
                   fullWidth
                   id="password"
                   name="password"
-                  autoComplete="current-password"
                   autoFocus
                   type={passwordVisibility.showPassword ? "text" : "password"}
                   InputProps={{
                     style: {
                       fontSize: "0.8rem",
+                      marginBottom: "1.8rem",
                     },
                     endAdornment: (
                       <InputAdornment position="end">

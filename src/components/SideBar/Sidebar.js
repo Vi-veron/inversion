@@ -30,7 +30,10 @@ function Sidebar() {
           <Link to="/dashboard" className={classes.link}>
             <ListItemButton>
               <ListItemIcon>
-                <TrendingUp style={{ color: "#fff" }} />
+                <TrendingUp
+                  className={classes.listItemButton}
+                  style={{ color: "#fff" }}
+                />
               </ListItemIcon>
               <ListItemText>Dashboard</ListItemText>
             </ListItemButton>

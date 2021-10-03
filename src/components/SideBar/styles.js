@@ -4,16 +4,16 @@ const styles = makeStyles((theme) => ({
   sideBar: {
     height: "100vh",
     backgroundColor: theme.palette.primary.main,
-    "@media (max-width: 1024px)": {
-      width: 180,
+    [theme.breakpoints.down("lg")]: {
+      width: 200,
     },
   },
   logo: {
-    paddingLeft: 34,
-    paddingTop: 80,
-    width: 180,
-    height: "20vh",
-    "@media (max-width: 1024px)": {
+    paddingLeft: "2rem",
+    paddingTop: "4rem",
+    width: 140,
+    height: "14vh",
+    [theme.breakpoints.down("lg")]: {
       width: 120,
     },
   },
@@ -22,13 +22,13 @@ const styles = makeStyles((theme) => ({
     opacity: 0.2,
   },
   sidebarItem: {
-    height: "70vh",
+    height: "76vh",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
-    margin: 30,
     color: "#fff",
   },
+
   active: {
     fontWeight: 900,
     fontSize: "5rem",
@@ -40,8 +40,8 @@ const styles = makeStyles((theme) => ({
     fontWeight: 500,
     marginTop: 15,
     padding: "20px 0",
-    "@media (max-width: 1024px)": {
-      fontSize: 12,
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "0.8rem",
     },
   },
   link: {

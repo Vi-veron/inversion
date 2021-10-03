@@ -70,11 +70,11 @@ export default function Register() {
 
   const formik = useFormik({
     initialValues: {
-      name: "Victoria Smith",
-      username: "vikee",
-      email: "example@example.com",
-      mobile: "08134360599",
-      password: "example",
+      name: "",
+      username: "",
+      email: "",
+      mobile: "",
+      password: "",
       checkbox: { checked },
     },
     validationSchema: RegistrationSchema,
@@ -138,7 +138,6 @@ export default function Register() {
                       Name
                     </label>
                     <TextField
-                      autoComplete="name"
                       name="name"
                       variant="outlined"
                       required
@@ -161,7 +160,6 @@ export default function Register() {
                       User Name
                     </label>
                     <TextField
-                      autoComplete="username"
                       name="username"
                       variant="outlined"
                       required
@@ -201,7 +199,6 @@ export default function Register() {
                         fontSize: "0.8rem",
                       },
                     }}
-                    autoComplete="email"
                     name="email"
                     value={formik.values.email}
                     onChange={formik.handleChange}
@@ -215,7 +212,6 @@ export default function Register() {
                     Phone Number
                   </label>
                   <TextField
-                    autoComplete="mobile"
                     name="mobile"
                     variant="outlined"
                     required
@@ -246,7 +242,6 @@ export default function Register() {
                     fullWidth
                     id="password"
                     name="password"
-                    autoComplete="current-password"
                     autoFocus
                     type={passwordVisibility.showPassword ? "text" : "password"}
                     InputProps={{

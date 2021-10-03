@@ -1,7 +1,9 @@
 import * as Yup from "yup";
 
 const RegistrationSchema = Yup.object().shape({
-  name: Yup.string("Enter your name").required("Fullname is required"),
+  name: Yup.string("Enter your name")
+    .min(2, "Too Short!")
+    .required("Fullname is required"),
   username: Yup.string("Enter your username")
     .min(3, "Too Short!")
     .max(20, "Too Long!")
