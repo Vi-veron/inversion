@@ -23,7 +23,7 @@ const styles = makeStyles((theme) => ({
   },
   label: {
     marginTop: 30,
-    fontSize: "1.2rem",
+    fontSize: "1rem",
     color: grey[800],
     fontWeight: 400,
     "@media (max-width: 540px)": {
