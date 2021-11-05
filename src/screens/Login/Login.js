@@ -131,9 +131,16 @@ const Login = () => {
               </Grid>
 
               <Grid className={classes.gridStyle} item xs={12}>
-                <label htmlFor="password" className={classes.labelStyle}>
-                  Password
-                </label>
+                <span
+                  style={{ display: "flex", justifyContent: "space-between" }}
+                >
+                  <label htmlFor="password" className={classes.labelStyle}>
+                    Password
+                  </label>
+                  <Link to="/password/reset" className={classes.forgotPassword}>
+                    forgot password?
+                  </Link>
+                </span>
                 <TextField
                   variant="outlined"
                   fullWidth

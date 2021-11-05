@@ -25,6 +25,7 @@ import useMutationNotifications from "hooks/useMutationNotifications";
 import useCreateUserMutation from "hooks/queries/useCreateUserMutation";
 import RegistrationSuccess from "./components/RegistrationSuccess";
 import useParamSearch from "hooks/useParamSearch";
+import { en } from "i18n";
 
 export default function Register() {
   const classes = styles();
@@ -107,7 +108,7 @@ export default function Register() {
           <Container component="main" maxWidth="xs">
             <form onSubmit={formik.handleSubmit}>
               <div>
-                <h2 className={classes.header}>Create an account</h2>
+                <h2 className={classes.header}>{en.register.title}</h2>
                 <p className={classes.subheader}>
                   Already have an account?{" "}
                   <Link className={classes.linkStyle} to="/login">

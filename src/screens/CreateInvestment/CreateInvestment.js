@@ -44,7 +44,7 @@ export default function CreateInvestment({ investmentId }) {
 
   const formik = useFormik({
     initialValues: {
-      id: null,
+      id: [],
       amount: "",
     },
     validationSchema: CreatePlanSchema,
@@ -80,7 +80,7 @@ export default function CreateInvestment({ investmentId }) {
     );
 
   const breakPoints = [
-    { width: 1, itemsToShow: 1 },
+    { width: 1, itemsToShow: 2 },
     { width: 550, itemsToShow: 2, itemsToScroll: 2 },
     { width: 850, itemsToShow: 3 },
     { width: 1150, itemsToShow: 4, itemsToScroll: 2 },
@@ -140,7 +140,7 @@ export default function CreateInvestment({ investmentId }) {
 
                         <h2 className="card-header">{plan.name}</h2>
                         <p className="card-info">
-                          Get {plan.expectedReturn} every month
+                          Get {plan.expectedReturn}% every month
                         </p>
                       </label>
                       {formik.touched.id && Boolean(formik.errors.id)
@@ -167,15 +167,7 @@ export default function CreateInvestment({ investmentId }) {
                 <span className="arrowForward">
                   <ArrowForwardIcon />
                 </span>
-                <span
-                  style={{
-                    display: "flex",
-                    marginTop: 60,
-                    backgroundColor: "#ccc",
-                    height: 60,
-                  }}
-                  className="btnWrapper"
-                >
+                <span className="btnWrapper">
                   <button type="submit" className="submit">
                     Make Investment
                   </button>
