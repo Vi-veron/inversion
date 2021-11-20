@@ -17,7 +17,7 @@ export let theme = createTheme({
       styleOverrides: {
         // Name of the slot
         input: {
-          padding: "0.8rem 0.8rem",
+          height: "0.4rem",
         },
       },
     },
@@ -104,6 +104,11 @@ export let theme = createTheme({
       main: "#4BB04F",
       dark: "",
       contrastText: "#fff",
+    },
+    accent: {
+      1: "#eaeaea",
+      2: "#cecece",
+      3: "#5e5e5e",
     },
   },
 });

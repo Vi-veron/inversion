@@ -114,7 +114,7 @@ const styles = makeStyles((theme) => ({
     paddingBottom: "0.8rem",
   },
   submit: {
-    padding: "0.8rem",
+    padding: "0.6rem",
     fontSize: "0.8rem",
     "&:hover": {
       backgroundColor: theme.palette.primary.light,
