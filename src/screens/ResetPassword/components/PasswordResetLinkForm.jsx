@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { TextField, Button, Typography } from "@mui/material";
+import { TextField, Button, Typography, Container } from "@mui/material";
 import { useFormik } from "formik";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
@@ -39,38 +39,45 @@ const PasswordResetLinkForm = ({ onSuccess }) => {
 
   return (
     <div>
-      <form onSubmit={formik.handleSubmit} className={classes.container}>
-        <h1 className={classes.header}>Reset Password </h1>
-        <Typography className={classes.text}>
-          Please enter your credentials first.They wont be shared publicly, and
-          you wont be spammed.
-        </Typography>
-        <label className={classes.label}>Email Address</label>
-        <TextField
-          variant="outlined"
-          margin="normal"
-          required
-          fullWidth
-          id="email"
-          name="email"
-          autoComplete="email"
-          autoFocus
-          className={classes.input}
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          error={formik.touched.email && Boolean(formik.errors.email)}
-          helperText={formik.touched.email && formik.errors.email}
-          // {...textFieldProps}
-        />
-        <Button className={classes.submit} type="submit" fullWidth>
-          Reset Link
-        </Button>
-        <p>
-          <Link className={classes.link} to="/login">
-            Back to login page
-          </Link>
-        </p>
-      </form>
+      <Container component="main" maxWidth="xs">
+        <form onSubmit={formik.handleSubmit} className={classes.container}>
+          <h1 className={classes.header}>Reset Password </h1>
+          <Typography className={classes.text}>
+            Please enter your credentials first.They wont be shared publicly,
+            and you wont be spammed.
+          </Typography>
+          <label className={classes.label}>Email Address</label>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            name="email"
+            autoComplete="email"
+            autoFocus
+            className={classes.input}
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
+            // {...textFieldProps}
+          />
+          <Button
+            variant="contained"
+            type="submit"
+            fullWidth
+            className={classes.submit}
+          >
+            Reset Link
+          </Button>
+          <p>
+            <Link className={classes.link} to="/login">
+              Back to login page
+            </Link>
+          </p>
+        </form>
+      </Container>
     </div>
   );
 };

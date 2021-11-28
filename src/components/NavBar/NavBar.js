@@ -8,7 +8,11 @@ export default function NavBar() {
       <input type="checkbox" id="nav-check" />
       <div className="nav-header">
         <a href="/">
-          <img alt="logo" src="icon/investon-light-icon.svg" />
+          <img
+            alt="investon"
+            src={`/logo/investon-light-with-text.svg`}
+            className="logo"
+          />
         </a>
       </div>
       <div className="nav-btn">
@@ -30,7 +34,7 @@ export default function NavBar() {
             <Link to="">About</Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <a href="#contact">Contact</a>
           </li>
 
           <li>
