@@ -10,7 +10,7 @@ import {
   TextareaAutosize,
 } from "@mui/material";
 import SpacingGrid from "components/SpacingGrid";
-import { LocationOn, PhoneAndroid, Mail, Language } from "@mui/icons-material";
+import { Mail, Language } from "@mui/icons-material";
 
 export default function HomePage() {
   return (
@@ -63,94 +63,6 @@ export default function HomePage() {
           <h1 style={{ color: "#F44335" }}>Become </h1>
           <h1 style={{ color: "#1d1a72", paddingLeft: 12 }}>An Investor</h1>
         </Box>
-        <Container
-          sx={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "space-evenly",
-          }}
-        >
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ width: "40px" }}>
-              <img
-                style={{ width: "100%", borderRadius: 20 }}
-                alt=""
-                src="img/kay.jpeg"
-              />
-            </Box>
-            <p
-              style={{
-                fontSize: "1.2rem",
-                fontWeight: 700,
-                color: "#5e5e5e",
-                paddingLeft: "1rem",
-              }}
-            >
-              Joe Johnson
-            </p>
-          </Box>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ width: "40px" }}>
-              <img
-                alt=""
-                style={{ width: "100%", borderRadius: 20 }}
-                src="img/dan.jpeg"
-              />
-            </Box>
-            <p
-              style={{
-                fontSize: "1.2rem",
-                fontWeight: 700,
-                color: "#5e5e5e",
-                paddingLeft: "1rem",
-              }}
-            >
-              James Veron
-            </p>
-          </Box>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ width: "40px" }}>
-              <img
-                alt=""
-                style={{ width: "100%", borderRadius: 20 }}
-                src="img/kiara.jpeg"
-              />
-            </Box>
-            <p
-              style={{
-                fontSize: "1.2rem",
-                fontWeight: 700,
-                color: "#5e5e5e",
-                paddingLeft: "1rem",
-              }}
-            >
-              Kiara Smith
-            </p>
-          </Box>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box sx={{ width: "40px" }}>
-              <img
-                alt=""
-                style={{ width: "100%", borderRadius: 20 }}
-                src="img/james.jpeg"
-              />
-            </Box>
-            <p
-              style={{
-                fontSize: "1.2rem",
-                fontWeight: 700,
-                color: "#5e5e5e",
-                paddingLeft: "1rem",
-              }}
-            >
-              Joe Jonas
-            </p>
-          </Box>
-        </Container>
-
-        <h2 style={{ paddingTop: 80, paddingBottom: 10, color: "#333" }}>
-          Wondering How To Become An Investor?
-        </h2>
         <p style={{ lineHeight: "1.5rem" }}>
           The br hfjhjfeatu,knres built inton,k were designed to help online
           shop ownejbgbrs present tn,.kheir <br />
@@ -183,42 +95,7 @@ export default function HomePage() {
                 For registration questions please don't hesitate to get in touch
                 using the contact details below
               </p>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignContent: "center",
-                  height: 40,
-                }}
-              >
-                <LocationOn
-                  style={{
-                    color: "#F44335",
-                    fontSize: "1rem",
-                    marginRight: "0.4rem",
-                  }}
-                />
-                <p style={{ fontSize: "0.8rem" }}>
-                  Plot 76B Egbeda Road, Lagos State.
-                </p>
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "row",
-                  alignContent: "center",
-                  height: 40,
-                }}
-              >
-                <PhoneAndroid
-                  style={{
-                    color: "#5e5e5e",
-                    fontSize: "1rem",
-                    marginRight: "0.4rem",
-                  }}
-                />
-                <p style={{ fontSize: "0.8rem" }}>+2348137844846</p>
-              </Box>
+
               <Box
                 sx={{
                   display: "flex",
