@@ -33,7 +33,7 @@ export default function HomePage() {
       {/**Section 2 */}
       <div className="section-2">
         <div className="section-2-wrapper">
-          <div className="introduction-container">
+          <div className="introduction-container animation">
             <div className="introduction-text">
               Investon seeks maximum safety and stability for your principal by
               focusing on securities and investments that carry a low degree of
@@ -63,22 +63,27 @@ export default function HomePage() {
           <h1 style={{ color: "#F44335" }}>Become </h1>
           <h1 style={{ color: "#1d1a72", paddingLeft: 12 }}>An Investor</h1>
         </Box>
-        <p style={{ lineHeight: "1.5rem" }}>
-          The br hfjhjfeatu,knres built inton,k were designed to help online
-          shop ownejbgbrs present tn,.kheir <br />
-          merchanbjgkdise and find more customers The br hfjhjfeatu,knres built
-          inton,k were
-          <br /> designed to help online shop ownejbgbrs present tn.
-        </p>
+        <Container maxWidth="md">
+          <p style={{ lineHeight: "1.5rem" }}>
+            Investing is essential if you want your savings to grow over time.
+            Although keeping money in a savings account appears safe, the
+            interest you’ll earn isn’t enough to keep up with inflation over
+            many decades. You don’t have to <br />
+            wait until you are debt-free to start investing (in fact, you
+            shouldn’t wait this long!). <a href="/">Start Now!</a>
+          </p>
+        </Container>
       </div>
       {/**Section 4 */}
       <div className="section-4">
         <Container maxWidth="md">
           <h1>Check out available investment plans</h1>
-          <p>
-            The br hfjhjfeatu,knres built inton,k were designed to help online
-            shop ownejbgbrs <br />
-            present tn,.kheir merchanbjgkdise and find more customers
+          <p style={{ lineHeight: "1.5rem" }}>
+            Choosing an investment plan is the first step to becoming an
+            investor. You can invest in agriculture, <br />
+            bonds, real estate, mutual funds, and much more. What you invest in
+            depends on your
+            <br /> goals - both long-term and short-term.
           </p>
           <SpacingGrid />
         </Container>
