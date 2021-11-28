@@ -15,7 +15,7 @@ function Hero() {
         investment. But you can get pretty close.
       </p>
       <p className={classes.heroSubText}>
-        Inversion seeks maximum safety and stability for your principal by
+        Investon seeks maximum safety and stability for your principal by
         focusing on securities and investments that carry a low degree of risk.
       </p>
     </div>

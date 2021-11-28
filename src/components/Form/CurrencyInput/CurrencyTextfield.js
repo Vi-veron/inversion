@@ -58,6 +58,7 @@ export default function CurrencyInput({ label, id, ...rest }) {
         autoFocus
         className={classes.root}
         id={id}
+        type="number"
         name={"amount"}
         value={amount.numberformat}
         onChange={handleChange}
@@ -65,7 +66,7 @@ export default function CurrencyInput({ label, id, ...rest }) {
           style: {
             fontSize: "0.8rem",
           },
-          inputComponent: NumberFormatCustom,
+          // inputComponent: NumberFormatCustom,
           startAdornment: (
             <InputAdornment position="start">
               <IconButton className={classes.icon}>&#x20a6;</IconButton>

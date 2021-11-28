@@ -34,7 +34,7 @@ export default function NavBar() {
             <Link to="">About</Link>
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <a href="#contact">Contact</a>
           </li>
 
           <li>
